@@ -5,12 +5,17 @@
 
 ## 目录
 
+*   [根据设备编号查询班牌信息](#根据设备编号查询班牌信息)
+*   [上传班牌基本参数](#上传班牌基本参数)
+*   [上传班牌运行状态信息](#上传班牌运行状态信息)
+*   [根据班级查询模式切换列表](#根据班级查询模式切换列表)
+*   [模式切换时上传新模式](#模式切换时上传新模式)
 *   [查询一个班级的班牌设置](#查询一个班级的班牌设置)
-
 *   [发送一条消息](#发送一条消息)
 *   [删除一条消息](#删除一条消息)
 *   [查询消息列表](#查询消息列表)
 *   [查询展示内容列表](#查询展示内容列表)
+
 
 
 
@@ -29,12 +34,225 @@
 }
 ```
 
+## 根据设备编号查询班牌信息
+
+```
+请求地址：/v1/device/sn/{sn}
+
+请求类型：GET
+
+请求说明：
+1、验证班牌是否可用；2、查询或更新班牌基本信息；3、查询当前模式信息
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+sn | true | string | 设备唯一编号 
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+    "id": 7,
+    "title": "电子班牌",
+    "model": "品牌型号",
+    "intro": "设备说明信息",
+    "category": 1,
+    "sn": "10000006",
+    "bind": 0,
+    "tenantId": "",
+    "schoolId": "10031002",
+    "classId": "1003100210011003",
+    "installTime": "2018-05-20 13:36:35",
+    "installPlace": "校门口",
+    "runStatus": 1,
+    "androidVersion": "",
+    "softVersion": "",
+    "dpi": "",
+    "startTime": "",
+    "styleId": "",
+    "styleTitle": "",
+    "createTime": "2018-05-20 13:36:44",
+    "updateTime": "2018-05-21 16:43:05",
+    "deleted": 0
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | int | ID
+title | string | 设备名称
+model | string | 设备品牌、型号 
+intro | string | 设备说明
+category | string | 设备类型：1-班级班牌
+sn | string | 设备编号：用于和班牌设备的绑定
+bind | int | 是否已经绑定设备：1-已绑定；0-未绑定
+tenantId | string | 租户ID
+schoolId | string | 学校ID
+classId | string | 班级ID
+installTime | string | 安装时间
+installPlace | string | 安装位置
+runStatus | int | 运行状态：1-正常；0-异常
+androidVersion | string | 安卓版本
+softVersion | string | 班牌软件版本
+dpi | string | 分辨率
+startTime | string | 上次启动时间
+styleId | string | 当前运行模式ID
+styleTitle | string | 当前运行模式名称
+createTime | string | 创建时间
+updateTime | string | 修改时间
+deleted | int | 是否删除：0-否；1-是
+
+
+## 上传班牌基本参数
+
+```
+请求地址：/v1/device/{id}
+
+请求类型：POST
+
+请求说明：
+1、上传班牌参数；2、上传上次启动时间；3、上传当前运行模式；4、上传信息即绑定当前班牌
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+androidVersion | false | string | 安卓版本
+softVersion | false | string | 班牌软件版本
+dpi | false | string | 分辨率
+startTime | false | string | 上次启动时间
+styleId | false | string | 当前运行模式ID
+
+#### 返回结果
+
+*** 返回值为空 ***
+
+
+## 上传班牌运行状态信息
+
+```
+请求地址：/v1/check/
+
+请求类型：POST
+
+请求说明：
+上传班牌运行状态信息，并将状态信息同步到班牌基本信息中
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+deviceId | true | string | 设备ID
+runStatus | true | string | 运行状态：1-正常；0-异常
+image | false | string | 班牌截图
+styleId | false | string | 当前运行模式ID
+network | false | string | 网络模式
+ramAll | false | int | 班牌内存，单位：KB
+ramFree | false | int | 可用内存，单位：KB
+romAll | false | int | 班牌存储，单位：KB
+romFree | false | int | 可用存储，单位：KB
+softVersion | false | string | 班牌软件版本
+
+#### 返回结果
+
+*** 返回值为空 ***
+
+## 根据班级查询模式切换列表
+
+```
+请求地址：/v1/style-change/{classId}
+
+请求类型：GET
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | false | string | 班级ID
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+[
+    {
+        "id": 1,
+        "schoolId": "10011001",
+        "schoolName": "中国儿童中心实验幼儿园",
+        "classId": "1001100110011001",
+        "className": "大（1）班",
+        "styleId": 1,
+        "styleName": "公告模式",
+        "changeTime": "1970-01-01 16:30:00",
+        "createTime": "2018-05-20 15:15:03",
+        "updateTime": "2018-05-20 15:24:14",
+        "deleted": 0
+    }
+]
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | int | ID
+schoolId  | string | 学校ID
+schoolName | string | 学校名称 
+classId | string | 班级ID
+className | int | 班级名称
+styleId | int | 切换模式ID
+styleName | string | 模式名称
+changeTime | string | 切换模式时间，有效值为时间，日期无效
+createTime | string | 创建时间
+updateTime | string | 修改时间
+deleted | int | 是否删除：0-否；1-是
+
+
+## 模式切换时上传新模式
+
+```
+请求地址：/v1/device/{id}/style
+
+请求类型：POST
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+id | true | int | 设备ID 
+styleId | true | int | 新模式ID 
+
+#### 返回结果
+
+*** 返回值为空 ***
+
+
 ## 查询一个班级的班牌设置
 
 ```
 请求地址：/v1/setup/{classId}
 
 请求类型：GET
+
 ```
 
 #### 请求参数
@@ -204,62 +422,6 @@ createTime | string | 创建时间
 updateTime | string | 修改时间
 deleted | int | 是否删除：0-否；1-是
 msgContent | string | 消息内容：文本消息是文本内容，图片消息是图片路径
-
-
-## 根据班级查询模式切换列表
-
-```
-请求地址：/v1/style-change/{classId}
-
-请求类型：GET
-```
-
-#### 请求参数
-
-字段   |   是否必选    |   字段类型   |字段说明
-------  |  -----------|-------------|-----------
-classId | false | string | 班级ID
-
-#### 返回结果
-
-*** JSON示例 ***
-
-```
-
-[
-    {
-        "id": 1,
-        "schoolId": "10011001",
-        "schoolName": "中国儿童中心实验幼儿园",
-        "classId": "1001100110011001",
-        "className": "大（1）班",
-        "styleId": 1,
-        "styleName": "公告模式",
-        "changeTime": "1970-01-01 16:30:00",
-        "createTime": "2018-05-20 15:15:03",
-        "updateTime": "2018-05-20 15:24:14",
-        "deleted": 0
-    }
-]
-
-```
-
-#### 返回参数
-
-字段    |   字段类型   |字段说明
------------|-------------|-----------
-id | int | ID
-schoolId  | string | 学校ID
-schoolName | string | 学校名称 
-classId | string | 班级ID
-className | int | 班级名称
-styleId | int | 切换模式ID
-styleName | string | 模式名称
-changeTime | string | 切换模式时间，有效值为时间，日期无效
-createTime | string | 创建时间
-updateTime | string | 修改时间
-deleted | int | 是否删除：0-否；1-是
-
 
 
 ## 查询展示内容列表
