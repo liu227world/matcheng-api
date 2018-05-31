@@ -9,17 +9,15 @@
 *   [检测设备编号是否存在](#检测设备编号是否存在)
 *   [获取设备基础信息](#获取设备基础信息)
 
-
 *   [内容发布：文章、图片、视频](#内容发布：文章、图片、视频)
 *   [我发布的内容列表：文章、图片、视频](#我发布的内容列表：文章、图片、视频)
-
 
 *   [今日走班课表](#今日走班课表)
 *   [当前课程和学生列表：正在上课或半小时内开始上课](#当前课程和学生列表：正在上课或半小时内开始上课)
 *   [走班刷卡考勤](#走班刷卡考勤)
 
 *   [信息列表查询](#信息列表查询)
-
+*   [通知列表查询](#通知列表查询)
 
 
 ## 检测设备编号是否存在
@@ -489,6 +487,60 @@ INFOTYPE | string | 信息类型：对应新区块ID
 TITLE | string | 内容标题
 EDITTIME | string | 修改时间
 
+
+
+## 通知列表查询
+
+```
+请求方式：execute("DzbpNotice","selectNoticeListService","deviceNumber=;limitStr=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+deviceNumber | true | string | 设备编号
+limitStr | true | string | 分页参数字符串，格式为0,10
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"selectNoticeList": [{
+		"CREATEUSERNAME": "系统管理员",
+		"NOTICETITLE": "一条校内通知",
+		"DATASOURCE": "",
+		"CONTENT": "一条校内通知",
+		"CREATETIME": "2018-05-31 18:59:51",
+		"NOTICEID": "3",
+		"DURATION": "300",
+		"TYPE": "紧急通知",
+		"TYPEID": "10002",
+		"EDITTIME": "2018-05-31 18:59:51"
+	}]
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+CREATEUSERNAME | string | 发布人姓名
+NOTICETITLE | string | 通知标题：取内容
+DATASOURCE | string | （未使用）
+CONTENT | string | 通知内容
+CREATETIME | string | 创建时间
+NOTICEID | string | 通知ID
+DURATION | string | 显示时长（无效）
+TYPE | string | 通知类型
+TYPEID | string | 通知名称
+EDITTIME | string | 修改时间
 
 
 
