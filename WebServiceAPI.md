@@ -9,6 +9,16 @@
 *   [获取设备基础信息](#获取设备基础信息)
 
 
+*   [内容发布（文章、图片、视频）](#内容发布（文章、图片、视频）)
+*   [我发布的内容列表（文章、图片、视频）](#我发布的内容列表（文章、图片、视频）)
+
+
+*   [今日走班课表](#今日走班课表)
+
+
+
+
+
 ## 检测设备编号是否存在
 
 ```
@@ -169,5 +179,170 @@ contrast | int | 对比度（百分比，0到100的整数）
 volume | int | 音量（百分比，0到100的整数）
 
 
+
+## 内容发布（文章、图片、视频）
+
+```
+请求方式：execute("DzbpNewsInfo","insertService","contentType=;schoolId=;classId=;title=;content=;thumb=;username=;","json");
+
+请求说明：发布图片时，可以同时发布多张图片，多个title和content以逗号“,”隔开
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+contentType | true | string | 内容类型：1-文章；2-相册；3-视频
+schoolId | true | string | 学校ID 
+classId | true | string | 班级ID 
+title | true | string | 内容标题 
+content | true | string | 文章内容，或图片文件名，或视频文件名（上传后返回的文件名） 
+thumb | false | string | 发视频时有效，视频缩略图 
+username | true | string | 发布人用户名
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"msg": "文章发布成功"
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+msg | string | 返回值说明
+
+
+## 我发布的内容列表（文章、图片、视频）
+
+```
+请求方式：execute("DzbpNewsInfo","myContentList","contentType=;username=;page=;limit=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+contentType | true | int | 内容类型：1-文章；2-相册；3-视频，值为空时，查询全部类型
+username | true | string | 用户名 
+page | true | int | 第几页 
+limit | true | int | 每页条数 
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"contentList": [{
+		"contentBody": "http://192.168.1.10:9000/file/201805281116122383.png?rules=normal",
+		"createTime": "2018-05-28 11:16:38",
+		"schoolName": "富阳区银湖街道受降幼儿园",
+		"publishName": "系统管理员",
+		"updateTime": "2018-05-28 11:16:38",
+		"classId": "1006100910051018",
+		"contentThumb": "http://192.168.1.10:9000/file/201805281116122383.png?rules=thumb",
+		"publishUsername": "18790591074",
+		"beginTime": "2018-05-28 11:16:25",
+		"contentType": 2,
+		"endTime": "2018-05-29 11:17:25",
+		"deleted": 0,
+		"contentId": 41,
+		"id": 110,
+		"blockTitle": "公告",
+		"blockId": 4,
+		"contentTitle": "萌萌02.png",
+		"className": "小一班",
+		"schoolId": "10061009"
+	}]
+}
+
+```
+
+#### 返回参数 contentList
+*** 参数未按照返回json排序 ***
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | string | ID
+contentType | string | 内容类型：1-文章；2-相册；3-视频
+contentId | string | 内容ID：对应文章、相册、视频的ID
+contentTitle | string | 内容标题
+schoolId | string | 学校ID
+schoolName | string | 学校名称
+blockId | string | 班牌区块ID
+blockTitle | string | 区块标题
+classId | string | 班级ID
+className | string | 班级名称
+publishUsername | string | 发布人username
+publishName string | 发布人姓名
+beginTime | string | 展示开始时间
+endTime | string | 展示结束时间
+createTime | string | 创建时间
+updateTime | string | 修改时间
+deleted | string | 是否删除：0-否；1-是
+contentBody | string | 内容体：文章内容，或图片原图路径，或视频路径
+contentThumb | string | 内容缩略图：类型为图片或视频时有效
+
+
+
+## 今日走班课表
+
+```
+请求方式：execute("DzbpCourseInfo","selectCdCourseService","classId=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | true | string | 班级ID
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"selectCdCourse": [{
+		"id": 1,
+		"codeName": "初三物理三班",
+		"weekDay": 4,
+		"classTime": "10:00-10:40",
+		"orderNumber": 2,
+		"cdId": "1003100110011002",
+		"teacherName": "梁静静",
+		"teacherId": ""
+	}]
+}
+
+```
+
+#### 返回参数 selectCdCourse
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | string | 课表ID
+codeName | string | 课程名称
+weekDay | string | 星期几：1到7
+classTime | string | 开课时间
+orderNumber | string | 第几节课
+cdId | string | 班级ID
+teacherName | string | 教师姓名
+teacherId | string | 教师username（值为空）
 
 
