@@ -346,3 +346,80 @@ teacherName | string | 教师姓名
 teacherId | string | 教师username（值为空）
 
 
+## 当前课程和学生列表：正在上课或半小时内开始上课
+
+```
+请求方式：execute("DzbpCourseInfo","selectCourseStuService","classId=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | true | string | 班级ID
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"selectStuList": [{
+		"startTime": "2018-05-29 09:20:00",
+		"cardId": "3566229324",
+		"studentId": "17092701111654847",
+		"studentName": "何梓鑫"
+	}],
+	"selectLeaveList": []
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+startTime | string | 考勤时间
+cardId | string | 学生卡号
+studentId | string | 学生ID
+studentName | string | 学生姓名
+
+
+## 走班刷卡考勤
+
+```
+请求方式：execute("DzbpCourseInfo","signService","classId=;cardId=;image=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | true | string | 班级ID
+cardId | true | string | 签到卡号
+image | true | string | 上传的签到图片名
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"msg": "签到成功"
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+msg | string | 签到说明
+
+
