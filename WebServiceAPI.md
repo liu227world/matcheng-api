@@ -1,7 +1,8 @@
 
 # 电子班牌接口
 
-*   测试接口地址：http://192.168.1.94:9002/services/BPService?wsdl
+*   测试接口地址：http://192.168.1.10:9002/services/BPService?wsdl
+*   测试命名空间：http://service.matcheng.com
 
 ## 目录
 
@@ -9,13 +10,15 @@
 *   [获取设备基础信息](#获取设备基础信息)
 
 
-*   [内容发布（文章、图片、视频）](#内容发布（文章、图片、视频）)
-*   [我发布的内容列表（文章、图片、视频）](#我发布的内容列表（文章、图片、视频）)
+*   [内容发布：文章、图片、视频](#内容发布：文章、图片、视频)
+*   [我发布的内容列表：文章、图片、视频](#我发布的内容列表：文章、图片、视频)
 
 
 *   [今日走班课表](#今日走班课表)
+*   [当前课程和学生列表：正在上课或半小时内开始上课](#当前课程和学生列表：正在上课或半小时内开始上课)
+*   [走班刷卡考勤](#走班刷卡考勤)
 
-
+*   [信息列表查询](#信息列表查询)
 
 
 
@@ -180,7 +183,7 @@ volume | int | 音量（百分比，0到100的整数）
 
 
 
-## 内容发布（文章、图片、视频）
+## 内容发布：文章、图片、视频
 
 ```
 请求方式：execute("DzbpNewsInfo","insertService","contentType=;schoolId=;classId=;title=;content=;thumb=;username=;","json");
@@ -221,7 +224,7 @@ username | true | string | 发布人用户名
 msg | string | 返回值说明
 
 
-## 我发布的内容列表（文章、图片、视频）
+## 我发布的内容列表：文章、图片、视频
 
 ```
 请求方式：execute("DzbpNewsInfo","myContentList","contentType=;username=;page=;limit=;","json");
@@ -350,6 +353,7 @@ teacherId | string | 教师username（值为空）
 
 ## 当前课程和学生列表：正在上课或半小时内开始上课
 
+
 ```
 请求方式：execute("DzbpCourseInfo","selectCourseStuService","classId=;","json");
 
@@ -423,5 +427,68 @@ image | true | string | 上传的签到图片名
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
 msg | string | 签到说明
+
+
+
+## 信息列表查询
+
+```
+请求方式：execute("DzbpNewsInfo","selectInfoListService","deviceNumber=;limitStr=;infoType=;top=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+deviceNumber | true | string | 设备编号
+limitStr | true | string | 分页参数字符串，格式为0,10
+infoType | true | string | 信息类型：对应新区块ID
+top | true | string | 是否置顶（无效）
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"selectInfoList": [ {
+		"RESOURCEURL": "",
+		"CREATEUSERNAME": "余博伦",
+		"CONTENT": "http://192.168.1.10:9000/file/b.jpg?rules=normal",
+		"TEXTTYPE": "2",
+		"ID": "115",
+		"IMGURL": "http://192.168.1.10:9000/file/b.jpg?rules=thumb",
+		"CREATEUSER": "1003160811111253377",
+		"CREATETIME": "2018-05-30 18:39:57",
+		"DURATION": "300",
+		"INFOTYPE": "3",
+		"TITLE": "webservice图片",
+		"EDITTIME": "2018-05-30 18:39:57"
+	}]
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+RESOURCEURL | string | 资源路径（无效）
+CREATEUSERNAME | string | 发布人姓名
+CONTENT | string | 内容：文章主体，或图片路径，或视频路径
+TEXTTYPE | string | 文本类型：1-文章；2-图片；3-视频
+ID | string | ID
+IMGURL | string | 缩略图路径，图片或视频时有效
+CREATEUSER | string | 发布人用户名
+CREATETIME | string | 创建时间
+DURATION | string | 显示时长（300固定值）
+INFOTYPE | string | 信息类型：对应新区块ID
+TITLE | string | 内容标题
+EDITTIME | string | 修改时间
+
+
 
 
