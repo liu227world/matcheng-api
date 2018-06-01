@@ -320,13 +320,12 @@ classId | true | string | 班级ID
 {
 	"returnCode": "000",
 	"selectCdCourse": [{
-		"startTime": "10:00",
+		"id": "1",
 		"codeName": "初三物理三班",
-		"weekDay": 4,
-		"classId": "1003100110011002",
-		"orderNumber": 1,
-		"img": "",
-		"endTime": "10:40",
+		"weekDay": "5",
+		"classTime": "10:10-10:50",
+		"cdid": "1003100110011002",
+		"orderNumber": "1",
 		"teacherName": "梁静静",
 		"teacherId": ""
 	}]
@@ -338,13 +337,12 @@ classId | true | string | 班级ID
 
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
-startTime | string | 课程开始时间
+id | string | 课程开始时间
 codeName | string | 课程名称
 weekDay | string | 星期几：1到7
-classId | string | 班级ID
+classTime | string | 课程时间
+cdid | string | 班级ID
 orderNumber | string | 第几节课
-img | string | 课程图标（无数据）
-endTime | string | 课程结束时间
 teacherName | string | 教师姓名
 teacherId | string | 教师username（值为空）
 
