@@ -190,7 +190,7 @@ volume | int | 音量（百分比，0到100的整数）
 ## 内容发布
 
 ```
-请求方式：execute("DzbpNewsInfo","insertService","contentType=;schoolId=;classId=;title=;content=;thumb=;username=;","json");
+请求方式：execute("DzbpNewsInfo","insertService","contentType=;schoolId=;classId=;title=;content=;thumb=;username=;blockId=;","json");
 
 请求说明：
 1、发布图片时，可以同时发布多张图片，多个title和content以逗号“,”隔开；
@@ -210,6 +210,7 @@ title | true | string | 内容标题
 content | true | string | 文章内容，或图片文件名，或视频文件名（上传后返回的文件名） 
 thumb | false | string | 发视频时有效，视频缩略图 
 username | true | string | 发布人用户名
+blockId | true | string | 区块ID，上传图片时有效：1-小黑板；2-班级之星；3-主窗口
 
 #### 返回结果
 
