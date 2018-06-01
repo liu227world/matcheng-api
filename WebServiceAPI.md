@@ -10,14 +10,19 @@
 *   [获取设备基础信息](#获取设备基础信息)
 
 *   [内容发布：文章、图片、视频](#内容发布：文章、图片、视频)
-*   [我发布的内容列表：文章、图片、视频](#我发布的内容列表：文章、图片、视频)
+*   [我发布的内容列表【文章、图片、视频】](#我发布的内容列表【文章、图片、视频】)
 
 *   [今日走班课表](#今日走班课表)
-*   [当前课程和学生列表：正在上课或半小时内开始上课](#当前课程和学生列表：正在上课或半小时内开始上课)
+*   [当前课程和学生列表【正在上课或半小时内开始上课】](#当前课程和学生列表【正在上课或半小时内开始上课】)
 *   [走班刷卡考勤](#走班刷卡考勤)
 
 *   [信息列表查询](#信息列表查询)
 *   [通知列表查询](#通知列表查询)
+
+*   [查询班级未读留言](#查询班级未读留言)
+*   [刷卡查看我的未读留言，并将留言状态改为已读](#刷卡查看我的未读留言，并将留言状态改为已读)
+*   [学生刷卡拍照](#学生刷卡拍照)
+
 
 
 ## 检测设备编号是否存在
@@ -222,7 +227,7 @@ username | true | string | 发布人用户名
 msg | string | 返回值说明
 
 
-## 我发布的内容列表：文章、图片、视频
+## 我发布的内容列表【文章、图片、视频】
 
 ```
 请求方式：execute("DzbpNewsInfo","myContentList","contentType=;username=;page=;limit=;","json");
@@ -347,7 +352,7 @@ teacherName | string | 教师姓名
 teacherId | string | 教师username（值为空）
 
 
-## 当前课程和学生列表：正在上课或半小时内开始上课
+## 当前课程和学生列表【正在上课或半小时内开始上课】
 
 
 ```
@@ -369,11 +374,18 @@ classId | true | string | 班级ID
 
 {
 	"returnCode": "000",
-	"selectStuList": [{
-		"startTime": "2018-05-29 09:20:00",
-		"cardId": "3566229324",
-		"studentId": "17092701111654847",
-		"studentName": "何梓鑫"
+	"selectStuList": [ {
+		"byCard": "1",
+		"CARDID": "",
+		"STUDENTIMG": "",
+		"STUDENT_NAME": "",
+		"STUDENTID": "17092701111654847",
+		"STARTTIME": "",
+		"FIRSTTIME": "2018-05-31 15:51:22",
+		"CARDNUMBER": "3566229324",
+		"STUDENTNAME": "何梓鑫",
+		"STUDENT_ID": "",
+		"LASTTIME": "2018-05-31 15:51:22"
 	}],
 	"selectLeaveList": []
 }
@@ -384,10 +396,17 @@ classId | true | string | 班级ID
 
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
-startTime | string | 考勤时间
-cardId | string | 学生卡号
-studentId | string | 学生ID
-studentName | string | 学生姓名
+STUDENTID | string | 学生ID
+STUDENTNAME | string | 学生姓名
+STUDENTIMG | string | 头像路径
+FIRSTTIME | string | 最早刷卡时间
+LASTTIME | string | 最后刷卡时间
+CARDNUMBER | string | 卡号
+byCard | string | 是否刷卡：0-未刷卡；1-已刷卡
+STUDENT_ID | string | 
+STUDENT_NAME | string | 
+STARTTIME | string | 
+CARDID | string | 
 
 
 ## 走班刷卡考勤
@@ -541,4 +560,136 @@ TYPEID | string | 通知名称
 EDITTIME | string | 修改时间
 
 
+
+## 查询班级未读留言
+
+```
+请求方式：execute("DzbpMessage","selectMessageListService","classId=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | true | string | 班级ID
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"messageList": [{
+		"TIME": "2018-05-22 10:41:42",
+		"CONTENT": "这是发送为班牌的文本消息",
+		"STUDENTID": "1001150925154537031",
+		"ID": "1",
+		"PTITLE": "这是发送为班牌的文本消息",
+		"PARENTID": "安辰朗",
+		"ISREAD": "0",
+		"STUDENTNAME": "张桐赫"
+	}]
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+ID | string | 留言ID
+STUDENTID | string | 学生username
+STUDENTNAME | string | 学生姓名
+PARENTID | string | 家长username
+PTITLE | string | 标题(取内容)
+CONTENT | string | 内容
+TIME | string | 发送时间
+ISREAD | string | 是否已读：0-未读；1-已读；
+
+
+
+## 刷卡查看我的未读留言，并将留言状态改为已读
+
+```
+请求方式：execute("DzbpLeave","listLeaveByStudentService","cardId=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+cardId | true | string | 刷卡卡号
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"messageList": [{
+		"TIME": "2018-05-26 16:38:48",
+		"CONTENT": "测试信息",
+		"STUDENTID": "2014010440",
+		"ID": "15",
+		"PTITLE": "测试信息",
+		"PARENTID": "安辰朗",
+		"ISREAD": "0",
+		"STUDENTNAME": "陆亭宇"
+	}]
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+ID | string | 留言ID
+STUDENTID | string | 学生username
+STUDENTNAME | string | 学生姓名
+PARENTID | string | 家长username
+PTITLE | string | 标题(取内容)
+CONTENT | string | 内容
+TIME | string | 发送时间
+ISREAD | string | 是否已读：0-未读；1-已读；
+
+
+## 学生刷卡拍照
+
+```
+请求方式：execute("DzbpPhotoInfo","insertStudnetPhotoService","cardId=;image=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+cardId | true | string | 刷卡卡号
+image | true | string | 上传的图片名称
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"msg": "拍照上传成功"
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+msg | string | 上传说明
 
