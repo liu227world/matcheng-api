@@ -192,7 +192,10 @@ volume | int | 音量（百分比，0到100的整数）
 ```
 请求方式：execute("DzbpNewsInfo","insertService","contentType=;schoolId=;classId=;title=;content=;thumb=;username=;","json");
 
-请求说明：发布图片时，可以同时发布多张图片，多个title和content以逗号“,”隔开；可以发布文章、图片、视频
+请求说明：
+1、发布图片时，可以同时发布多张图片，多个title和content以逗号“,”隔开；
+2、可以发布文章、图片、视频；
+3、文字发布在班级通知，有效期为 1 天；图片和视频发布到班级主窗口，有效期为 7 天
 
 ```
 
@@ -451,6 +454,9 @@ msg | string | 签到说明
 
 ```
 请求方式：execute("DzbpNewsInfo","selectInfoListService","deviceNumber=;limitStr=;infoType=;top=;","json");
+请求说明：
+1、返回结果为分别取四个区块的集合，如 limitStr=1,10，则四个区块分别取10条数据；
+2、只取有效期内的数据
 
 ```
 
@@ -460,7 +466,7 @@ msg | string | 签到说明
 ------  |  -----------|-------------|-----------
 deviceNumber | true | string | 设备编号
 limitStr | true | string | 分页参数字符串，格式为0,10
-infoType | true | string | 信息类型：对应新区块ID
+infoType | true | string | 信息类型：对应新区块ID（无效）
 top | true | string | 是否置顶（无效）
 
 #### 返回结果
@@ -512,6 +518,8 @@ EDITTIME | string | 修改时间
 
 ```
 请求方式：execute("DzbpNotice","selectNoticeListService","deviceNumber=;limitStr=;","json");
+请求说明：
+1、只取有效期内的数据
 
 ```
 
