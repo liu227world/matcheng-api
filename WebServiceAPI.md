@@ -25,6 +25,9 @@
 
 *   [添加班级考勤](#添加班级考勤)
 
+*   [刷卡验证](#刷卡验证)
+*   [根据ID查询公告内容](#根据ID查询公告内容)
+
 
 ## 检测设备编号是否存在
 
@@ -788,3 +791,66 @@ cardNumber | true | string | 刷卡卡号
 id | string | 用户名
 name | string | 用户姓名
 type | string | 类型(1010教职工,1011学生,1012家长)
+
+
+## 根据ID查询公告内容
+
+```
+请求方式：execute("DzbpAfficheInfo","afficheInfoService","id=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+id | true | string | 内容ID，来自信鸽推送
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"afficheInfo": [{
+		"ID": 181,
+		"TITLE": "巡更测试二维码.jpg",
+		"TYPE": 2,
+		"TEXT_TYPE": "1",
+		"CONTENT": "http://192.168.1.94:9000/file/201806041834366607.jpg?rules=normal",
+		"CREATE_TIME": "2018-06-04 18:34:43",
+		"EDIT_TIME": "2018-06-04 18:34:43",
+		"CREATE_USER": "18790591074",
+		"CREATE_USER_NAME": "系统管理员",
+		"TENANT_ID": "",
+		"SCHOOL_ID": "",
+		"TEXT1": "",
+		"TEXT2": "",
+		"TEXT3": "",
+		"TEXT4": "",
+		"START_TIME": "2018-06-04 18:33:32",
+		"END_TIME": "2018-06-15 18:34:32",
+		"BACKGROUND_IMG": "",
+		"BACKGROUND_MUSIC": "",
+		"ROLL_SPEED": "3",
+		"ROLL_DIRECTION": "1",
+		"SHOW_TEXT": "",
+		"SHOW_TYPE": "",
+		"TEXT_ALPHA": "",
+		"PLAY_SPEED": "",
+		"IS_MUTE": ""
+	}],
+	"resouce": [{
+		"RESOURCE_URL": "http://192.168.1.94:9000/file/201806041834366607.jpg?rules=normal",
+		"REMARK": "",
+		"SORT": "1"
+	}]
+}
+
+```
+
+#### 返回参数
+
+*** 略 ***
