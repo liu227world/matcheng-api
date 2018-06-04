@@ -730,7 +730,14 @@ image | true | string | 上传的图片名称
 
 {
 	"returnCode": "000",
-	"msg": "考勤成功"
+	"msg": "考勤成功",
+	"insertAttendance": [{
+		"COLNUM": "1"
+	}],
+	"studentInfo": [{
+		"studentId": "16119014055854125",
+		"studentName": "舒全智"
+	}]
 }
 
 ```
@@ -739,4 +746,45 @@ image | true | string | 上传的图片名称
 
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
-msg | string | 考勤说明
+COLNUM | string | 
+studentId | string | 学生ID
+studentName | string | 学生姓名
+
+
+## 刷卡验证
+
+```
+请求方式：execute("DzbpDeviceInfo","checkCardNumberService","cardNumber=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+cardNumber | true | string | 刷卡卡号
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"checkCardNumber": [{
+		"id": "1003161114175854005",
+		"name": "舒全智",
+		"type": 1011
+	}]
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | string | 用户名
+name | string | 用户姓名
+type | string | 类型(1010教职工,1011学生,1012家长)
