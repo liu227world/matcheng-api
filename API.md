@@ -5,6 +5,10 @@
 
 ## 目录
 
+*   [多文件上传接口](#多文件上传接口)
+*   [文件预览接口](#文件预览接口)
+*   [文件下载接口](#文件下载接口)
+
 *   [根据设备编号查询班牌信息](#根据设备编号查询班牌信息)
 *   [上传班牌基本参数](#上传班牌基本参数)
 *   [上传班牌运行状态信息](#上传班牌运行状态信息)
@@ -15,8 +19,11 @@
 *   [删除一条消息](#删除一条消息)
 *   [查询消息列表](#查询消息列表)
 *   [查询展示内容列表](#查询展示内容列表)
+*   [查询一个班级基本信息](#查询一个班级基本信息)
 
-
+*   [走班课程开始签到](#走班课程开始签到)
+*   [学生走班签到](#学生走班签到)
+*   [查询走班考勤列表](#查询走班考勤列表)
 
 
 ## 接口错误说明
@@ -70,6 +77,34 @@ title | string | 文件的原始名称
 url | string | 保存文件名（这个是需要保存到数据库的字段）
 original | string | 源文件预览路径
 thumb | string | 缩略图预览路径
+
+
+## 文件预览接口
+
+```
+请求地址：/file/{fileName}
+
+请求类型：GET
+
+```
+
+#### 返回结果
+
+*** ResponseEntity<?> ***
+
+
+## 文件下载接口
+
+```
+请求地址：/file/download/{fileName}
+
+请求类型：GET
+
+```
+
+#### 返回结果
+
+*** ResponseEntity<InputStreamResource> ***
 
 
 ## 根据设备编号查询班牌信息
@@ -414,6 +449,8 @@ classId | false | string | 班级ID
 senderUsername | false | string | 发送人username
 receiverUsername | false | string | 接收人username
 msgContent | false | string | 消息内容
+msgContent | false | string | 消息内容
+readStatus | false | int | 是否已读：0-未读；1-已读；为空时查询全部
 page | false | int | 页码
 limit | false | int | 每页显示条数
 
@@ -434,6 +471,8 @@ limit | false | int | 每页显示条数
         "receiverName": "张桐赫",
         "msgType": 1,
         "msgSource": 1,
+        "readStatus": 0,
+        "readTime": "",
         "createTime": "2018-05-22 10:41:42",
         "updateTime": "2018-05-22 10:41:42",
         "deleted": 0,
@@ -456,6 +495,8 @@ receiverUsername | string | 接收人username
 receiverName | string | 接收人姓名
 msgType | string | 消息类型：1-文本消息；2-图片消息；默认1
 msgSource | string | 消息发送平台：1-APP；2-电子班牌；默认1
+readStatus | int | 是否已读：0-未读；1-已读；默认0
+readTime | string | 读取时间
 createTime | string | 创建时间
 updateTime | string | 修改时间
 deleted | int | 是否删除：0-否；1-是
@@ -528,3 +569,212 @@ endTime | string | 展示结束时间
 createTime | string | 创建时间
 updateTime | string | 修改时间
 
+
+## 查询一个班级基本信息
+
+```
+请求地址：/v1/organization/class/{classId}
+
+请求类型：GET
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | true | string | 班级ID 
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+    "classID": "1003100110011002",
+    "className": "正常班级",
+    "tenantId": "18790591074",
+    "createTime": "2016-08-11 09:40:55",
+    "logo": "",
+    "slogan": "",
+    "remark": "",
+    "headTeacher": "杨小拉"
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+classID | string | 班级ID
+className  | string | 班级名称
+tenantId | string | 集团ID 
+createTime | string | 创建时间
+logo | string | logo
+slogan | string | 班级口号
+remark | string | 班级介绍
+headTeacher | string | 班主任
+
+
+## 走班课程开始签到
+
+```
+请求地址：/v1/course/sign/signs
+
+请求类型：POST
+```
+
+#### 请求参数
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+curriculumId | true | int | 走班课表ID
+
+#### 返回结果
+
+*** 返回值为空 ***
+
+
+## 学生走班签到
+
+```
+请求地址：/v1/course/sign/sign
+
+请求类型：POST
+```
+
+#### 请求参数
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+curriculumId | true | int | 走班课表ID
+studentId | true | string | 学生ID
+signTime | true | string | 签到时间，格式为“2018-05-29 09:20:00”
+image | false | string | 考勤拍照照片，一般为图片上传后返回的文件名
+
+#### 返回结果
+
+*** 返回值为空 ***
+
+
+
+## 查询走班考勤列表
+
+```
+请求地址：/v1/course/sign/list
+
+请求类型：GET
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+courseId | false | int | 走班课程ID
+curriculumId | false | int | 走班课表ID
+studentId | false | string | 学生ID
+studentClassId | false | string | 学生所在物理班级ID
+page | false | int | 分页页数 
+limit | false | int | 每页显示条数
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+[
+    {
+        "id": 6,
+        "courseId": 1,
+        "curriculumId": 1,
+        "studentId": "17092701111654847",
+        "studentName": "何梓鑫",
+        "studentClassId": "1006100410011010",
+        "signTime": "1970-01-01 09:30:00",
+        "signStatus": 1,
+        "image": "201805240941309670.jpg",
+        "createTime": "2018-05-29 11:21:02",
+        "updateTime": "2018-05-29 11:36:47",
+        "deleted": 0,
+        "imageThumb": "http://127.0.0.1:9001/file/201805240941309670.jpg?rules=thumb"
+    }
+]
+
+```
+
+#### 返回参数
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | int | ID
+courseId  | int | 走班课程ID
+curriculumId | int | 走班课表ID
+studentId | string | 学生ID
+studentName | string | 学生姓名
+studentClassId | string | 学生所在物理班级ID
+signTime | string | 签到时间
+signStatus | int | 签到状态：1-正常、2-迟到、3-未签到；默认3
+image | string | 考勤拍照照片
+createTime | string | 创建时间
+updateTime | string | 修改时间
+imageThumb | string | 考勤照片的缩略图路径
+
+
+## 查询班级的有效通知列表
+
+```
+请求地址：/v1/notice/available
+
+请求类型：GET
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | false | string | 班级ID，为空时查询全部通知
+page | false | int | 分页页数，默认1
+limit | false | int | 每页显示条数，默认1000
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+[
+    {
+        "id": 1,
+        "schoolId": "10010001",
+        "schoolName": "中国儿童早教基地",
+        "classIds": "1001000110010002,1001000110010010,1001000110011001,1001000110011002",
+        "classNames": "周六(2)班,周六(1)班,平时(1)班,平时(2)班",
+        "content": "发送一条学校通知",
+        "publishUsername": "18790591074",
+        "publishName": "系统管理员",
+        "beginTime": "2018-05-05 09:00:00",
+        "endTime": "2018-06-09 09:00:00",
+        "createTime": "2018-05-29 14:17:44",
+        "updateTime": "2018-05-29 14:20:13",
+        "deleted": 0
+    }
+]
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | int | ID
+schoolId  | string | 学校ID
+schoolName | string | 学校名称 
+classIds | string | 班级ID，多个以逗号隔开
+classNames | string | 班级名称，多个以逗号隔开
+content | string | 通知内容
+publishUsername | string | 发布人用户名
+publishName | string | 发布人姓名
+beginTime | string | 展示开始时间
+endTime | string | 展示结束时间
+createTime | string | 创建时间
+updateTime | string | 修改时间
+deleted | int | 是否删除：0-否；1-是
