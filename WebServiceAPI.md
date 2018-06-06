@@ -86,64 +86,55 @@ deviceNumber | true | string | 设备唯一编号
 ```
 
 {
-    "returnCode": "000", 
-    "selectInfoType": [
-        {
-            "TYPENAME": "班级窗口1", 
-            "TIMES": "", 
-            "PARENTID": "", 
-            "TYPEID": "1"
-        }, 
-        {
-            "TYPENAME": "班级窗口2", 
-            "TIMES": "", 
-            "PARENTID": "", 
-            "TYPEID": "2"
-        }, 
-        {
-            "TYPENAME": "班级窗口3", 
-            "TIMES": "", 
-            "PARENTID": "", 
-            "TYPEID": "3"
-        }, 
-        {
-            "TYPENAME": "公告", 
-            "TIMES": "", 
-            "PARENTID": "", 
-            "TYPEID": "4"
-        }
-    ], 
-    "selectTemplateInfo": [ ], 
-    "selectClassInfo": [
-        {
-            "HEADTEACHER": "杨小拉", 
-            "LOGO": "", 
-            "CLASSID": "1003100110011002", 
-            "SLOGAN": "", 
-            "REMARK": "", 
-            "CLASSNAME": "正常班级"
-        }
-    ], 
-    "selectDeviceInfo": [
-        {
-            "DEVICETYPE": "1", 
-            "playSpeed": 2, 
-            "fontColor": "#00B0F0", 
-            "COMPANYNAME": "", 
-            "TENANTID": "", 
-            "playType": 1, 
-            "fontSize": 60, 
-            "contrast": 60, 
-            "brightness": 60, 
-            "OFFTIME": "19:30", 
-            "DEVICENAME": "电子班牌", 
-            "SELFIETIMES": "06:30-23:30", 
-            "DEVICENUMBER": "100011000", 
-            "ONTIME": "07:30", 
-            "volume": 60, 
-            "playShow": 30
-        }
-    ]
+	"returnCode": "000",
+	"selectInfoType": [{
+		"TYPENAME": "小黑板",
+		"TIMES": "",
+		"PARENTID": "",
+		"TYPEID": "1"
+	}, {
+		"TYPENAME": "班级之星",
+		"TIMES": "",
+		"PARENTID": "",
+		"TYPEID": "2"
+	}, {
+		"TYPENAME": "主窗口",
+		"TIMES": "",
+		"PARENTID": "",
+		"TYPEID": "3"
+	}, {
+		"TYPENAME": "公告",
+		"TIMES": "",
+		"PARENTID": "",
+		"TYPEID": "4"
+	}],
+	"selectTemplateInfo": [],
+	"selectClassInfo": [{
+		"HEADTEACHER": "王蒙",
+		"LOGO": "",
+		"CLASSID": "1003100110011002",
+		"SLOGAN": "好好学习天天向上",
+		"REMARK": "测试班级",
+		"CLASSNAME": "正常班级"
+	}],
+	"selectDeviceInfo": [{
+		"DEVICETYPE": "1",
+		"playSpeed": 2,
+		"fontColor": "#00B0F0",
+		"COMPANYNAME": "",
+		"TENANTID": "",
+		"playType": 1,
+		"fontSize": 60,
+		"contrast": 60,
+		"brightness": 60,
+		"OFFTIME": "19:30",
+		"DEVICENAME": "电子班牌",
+		"SELFIETIMES": "06:30-23:30",
+		"ONTIME": "07:30",
+		"DEVICENUMBER": "100011000",
+		"volume": 60,
+		"playShow": 30
+	}]
 }
 
 ```
@@ -383,25 +374,47 @@ classId | true | string | 班级ID
 
 {
 	"returnCode": "000",
-	"selectStuList": [ {
-		"byCard": "1",
+	"courseInfo": [{
+		"ID": 1,
+		"CDID": "1003100110011002",
+		"CODENAME": "高三物理一班",
+		"CLASSTIME": "15:00-17:50",
+		"WEEKDAY": 3,
+		"ORDERNUMBER": 2,
+		"TEACHERID": "17070124020620699",
+		"TEACHERNAME": "杨小拉"
+	}],
+	"selectStuList": [{
+		"byCard": "0",
 		"CARDID": "",
 		"STUDENTIMG": "",
-		"STUDENT_NAME": "",
-		"STUDENTID": "17092701111654847",
+		"STUDENT_NAME": "周钰铠",
+		"STUDENTID": "17092518095625890",
 		"STARTTIME": "",
-		"FIRSTTIME": "2018-05-31 15:51:22",
-		"CARDNUMBER": "3566229324",
-		"STUDENTNAME": "何梓鑫",
-		"STUDENT_ID": "",
-		"LASTTIME": "2018-05-31 15:51:22"
+		"FIRSTTIME": "",
+		"CARDNUMBER": "",
+		"STUDENTNAME": "周钰铠",
+		"STUDENT_ID": "17092518095625890",
+		"LASTTIME": ""
 	}],
 	"selectLeaveList": []
 }
 
 ```
+#### 返回参数 courseInfo
 
-#### 返回参数
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+ID | string | 课程ID
+CDID | string | 场地（班级）ID
+CODENAME | string | 课程名称
+CLASSTIME | string | 课程时间
+WEEKDAY | string | 星期几（1到7）
+ORDERNUMBER | string | 第几节课
+TEACHERID | string | 教师ID
+TEACHERNAME | string | 教师姓名
+
+#### 返回参数 selectStuList
 
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
@@ -441,7 +454,13 @@ image | true | string | 上传的签到图片名
 
 {
 	"returnCode": "000",
-	"msg": "签到成功"
+	"insertAttendance": [{
+		"COLNUM": "1"
+	}],
+	"studentInfo": [{
+		"studentId": "17092701111654847",
+		"studentName": "何梓鑫"
+	}]
 }
 
 ```
@@ -450,7 +469,9 @@ image | true | string | 上传的签到图片名
 
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
-msg | string | 签到说明
+COLNUM | string | 
+studentId | string | 学生ID
+studentName | string | 学生姓名
 
 
 
