@@ -1,1 +1,0 @@
-java -Dfile.encoding=UTF-8 -jar web-service-0.0.1-SNAPSHOT.jar

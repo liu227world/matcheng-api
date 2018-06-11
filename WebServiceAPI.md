@@ -88,25 +88,15 @@ deviceNumber | true | string | 设备唯一编号
 {
 	"returnCode": "000",
 	"selectInfoType": [{
-		"TYPENAME": "小黑板",
-		"TIMES": "",
+		"TYPENAME": "宣传模式",
+		"TIMES": "11:30-12:00",
 		"PARENTID": "",
-		"TYPEID": "1"
+		"TYPEID": "10100001"
 	}, {
-		"TYPENAME": "班级之星",
-		"TIMES": "",
+		"TYPENAME": "考勤模式",
+		"TIMES": "12:10-13:00",
 		"PARENTID": "",
-		"TYPEID": "2"
-	}, {
-		"TYPENAME": "主窗口",
-		"TIMES": "",
-		"PARENTID": "",
-		"TYPEID": "3"
-	}, {
-		"TYPENAME": "公告",
-		"TIMES": "",
-		"PARENTID": "",
-		"TYPEID": "4"
+		"TYPEID": "10100002"
 	}],
 	"selectTemplateInfo": [],
 	"selectClassInfo": [{
@@ -125,14 +115,14 @@ deviceNumber | true | string | 设备唯一编号
 		"TENANTID": "",
 		"playType": 1,
 		"fontSize": 60,
-		"contrast": 60,
-		"brightness": 60,
+		"brightness": 97,
+		"contrast": 100,
 		"OFFTIME": "19:30",
 		"DEVICENAME": "电子班牌",
 		"SELFIETIMES": "06:30-23:30",
-		"ONTIME": "07:30",
 		"DEVICENUMBER": "100011000",
-		"volume": 60,
+		"ONTIME": "07:30",
+		"volume": 99,
 		"playShow": 30
 	}]
 }
@@ -142,10 +132,10 @@ deviceNumber | true | string | 设备唯一编号
 #### 返回参数 selectInfoType
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
-TYPEID | string | 区块ID
-TYPENAME | string | 区块名称
-TIMES | string | 显示时段（无效）
-PARENTID | string | 上级类型ID（无效）
+TYPEID | string | 模式ID
+TYPENAME | string | 模式名称
+TIMES | string | 切换显示时段
+PARENTID | string | 上级类型ID
 
 #### 返回参数 selectTemplateInfo 无效
 
