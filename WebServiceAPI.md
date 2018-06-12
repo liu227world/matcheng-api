@@ -28,6 +28,8 @@
 *   [刷卡验证](#刷卡验证)
 *   [根据ID查询公告内容](#根据ID查询公告内容)
 
+*   [查询班牌当前模式](#查询班牌当前模式)
+
 
 ## 检测设备编号是否存在
 
@@ -424,7 +426,7 @@ CARDID | string |
 ## 走班刷卡考勤
 
 ```
-请求方式：execute("DzbpCourseInfo","signService","classId=;cardId=;image=;","json");
+请求方式：execute("DzbpCourseInfo","signService","classId=;cardId=;signTime=;image=;","json");
 
 ```
 
@@ -434,6 +436,7 @@ CARDID | string |
 ------  |  -----------|-------------|-----------
 classId | true | string | 班级ID
 cardId | true | string | 签到卡号
+signTime | true | string | 考勤时间，格式为：1970-01-01 10:00:00
 image | true | string | 上传的签到图片名
 
 #### 返回结果
@@ -724,7 +727,7 @@ msg | string | 上传说明
 ## 添加班级考勤
 
 ```
-请求方式：execute("DzbpAttendanceInfo","insertAttendanceService","deviceNumber=;cardId=;image=;","json");
+请求方式：execute("DzbpAttendanceInfo","insertAttendanceService","deviceNumber=;cardId=;signTime=;image=;","json");
 
 ```
 
@@ -734,6 +737,7 @@ msg | string | 上传说明
 ------  |  -----------|-------------|-----------
 deviceNumber | true | string | 设备编号
 cardId | true | string | 刷卡卡号
+signTime  | true | string | 考勤时间，格式为：1970-01-01 10:00:00
 image | true | string | 上传的图片名称
 
 #### 返回结果
@@ -865,3 +869,40 @@ id | true | string | 内容ID，来自信鸽推送
 #### 返回参数
 
 *** 略 ***
+
+
+## 查询班牌当前模式
+
+```
+请求方式：execute("DzbpDeviceInfo","thisStyleService","deviceNumber=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+deviceNumber | true | string | 班牌编号
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"returnCode": "000",
+	"thisStyleList": [{
+		"styleName": "公告模式",
+		"styleId": "1"
+	}]
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+styleId | string | 模式id：1-公告模式；4-走班模式；10100001-班级模式；10100002-考勤模式
+styleName | string | 模式名称
