@@ -26,7 +26,7 @@
 *   [添加班级考勤](#添加班级考勤)
 
 *   [刷卡验证](#刷卡验证)
-*   [根据ID查询公告内容](#根据ID查询公告内容)
+*   [根据ID查询公告内容](#根据id查询公告内容)
 
 *   [查询班牌当前模式](#查询班牌当前模式)
 
@@ -876,6 +876,9 @@ id | true | string | 内容ID，来自信鸽推送
 ```
 请求方式：execute("DzbpDeviceInfo","thisStyleService","deviceNumber=;","json");
 
+请求说明：
+1、
+
 ```
 
 #### 请求参数
@@ -892,19 +895,54 @@ deviceNumber | true | string | 班牌编号
 
 {
 	"returnCode": "000",
+	"afficheInfo": [{
+		"BACKGROUND_MUSIC": "",
+		"CREATE_TIME": "2018-06-13 15:31:37",
+		"IS_MUTE": "",
+		"PLAY_SPEED": "",
+		"TEXT_ALPHA": "",
+		"ROLL_SPEED": "3",
+		"CONTENT": "http://nn.wxztc.com.cn/txy/upload/banpai/normal/201806131531348208.png",
+		"CREATE_USER": "18790591074",
+		"ROLL_DIRECTION": "1",
+		"ID": 306,
+		"BACKGROUND_IMG": "",
+		"TYPE": "1",
+		"TEXT_TYPE": 2,
+		"EDIT_TIME": "2018-06-13 15:31:37",
+		"TEXT2": "",
+		"TEXT1": "",
+		"SCHOOL_ID": "",
+		"TEXT4": "",
+		"TEXT3": "",
+		"START_TIME": "2018-06-13 15:31:29",
+		"TENANT_ID": "",
+		"CREATE_USER_NAME": "系统管理员",
+		"SHOW_TYPE": "",
+		"END_TIME": "2018-06-29 15:32:29",
+		"SHOW_TEXT": "",
+		"TITLE": "ic_defaults_img"
+	}],
 	"thisStyleList": [{
 		"styleName": "公告模式",
 		"styleId": "1",
-		"contentType": 1
+		"contentType": 2
+	}],
+	"resource": [{
+		"SORT": "1",
+		"RESOURCE_URL": "http://nn.wxztc.com.cn/txy/upload/banpai/normal/201806131531348208.png",
+		"REMARK": ""
 	}]
 }
 
 ```
 
-#### 返回参数
+#### 返回参数 thisStyleList
 
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
 styleId | string | 模式id：1-公告模式；4-走班模式；10100001-班级模式；10100002-考勤模式
 styleName | string | 模式名称
-contentType | string | 公告类型：公告模式有效
+contentType | string | 公告类型，在公告模式下有效：1-文章；2-图片
+
+*** 其他参数略 ***
