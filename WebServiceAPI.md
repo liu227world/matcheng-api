@@ -894,7 +894,8 @@ deviceNumber | true | string | 班牌编号
 	"returnCode": "000",
 	"thisStyleList": [{
 		"styleName": "公告模式",
-		"styleId": "1"
+		"styleId": "1",
+		"contentType": 1
 	}]
 }
 
@@ -906,3 +907,4 @@ deviceNumber | true | string | 班牌编号
 -----------|-------------|-----------
 styleId | string | 模式id：1-公告模式；4-走班模式；10100001-班级模式；10100002-考勤模式
 styleName | string | 模式名称
+contentType | string | 公告类型：公告模式有效
