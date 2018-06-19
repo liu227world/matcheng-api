@@ -25,6 +25,10 @@
 *   [学生走班签到](#学生走班签到)
 *   [查询走班考勤列表](#查询走班考勤列表)
 
+*   [人脸搜索](#人脸搜索)
+*   [添加一个人脸](#添加一个人脸)
+
+
 
 ## 接口错误说明
 
@@ -778,3 +782,71 @@ endTime | string | 展示结束时间
 createTime | string | 创建时间
 updateTime | string | 修改时间
 deleted | int | 是否删除：0-否；1-是
+
+
+## 人脸搜索
+
+```
+请求地址：/v1/face/search
+
+请求类型：POST
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+file | true | MultipartFile | 人脸图片
+schoolId | true | string | 学校ID
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+	"username": "1003170227105333596",
+	"nickname": "阿拉丁",
+	"classId": "1003100110011002",
+	"className": "正常班级",
+	"schoolId": "10031001",
+	"schoolName": "媒成科技有限公司",
+	"score": 99.999084
+}
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+username  | string | 用户名
+nickname | string | 姓名 
+classId | string | 班级ID
+className | string | 班级名称
+schoolId | string | 学校ID
+schoolName | string | 学校名称
+score | number | 匹配度，0 到 100
+
+
+## 添加一个人脸
+
+```
+请求地址：/v1/face/face
+
+请求类型：POST
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+file | true | MultipartFile | 人脸正面清晰的图片
+schoolId | true | string | 学校ID
+classId | true | string | 班级ID
+username | true | string | 用户名
+
+#### 返回结果
+
+*** 空 ***
