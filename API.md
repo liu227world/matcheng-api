@@ -809,6 +809,7 @@ schoolId | true | string | 学校ID
 {
 	"username": "1003170227105333596",
 	"nickname": "阿拉丁",
+	"studentId": "123456",
 	"classId": "1003100110011002",
 	"className": "正常班级",
 	"schoolId": "10031001",
@@ -824,6 +825,7 @@ schoolId | true | string | 学校ID
 -----------|-------------|-----------
 username  | string | 用户名
 nickname | string | 姓名 
+studentId | string | 学生ID
 classId | string | 班级ID
 className | string | 班级名称
 schoolId | string | 学校ID
