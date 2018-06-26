@@ -180,8 +180,8 @@ volume | int | 音量（百分比，0到100的整数）
 
 请求说明：
 1、发布图片时，可以同时发布多张图片，多个title和content以逗号“,”隔开；
-2、可以发布文章、图片、视频；
-3、文字发布在班级通知，有效期为 1 天；图片和视频发布到班级主窗口，有效期为 7 天
+2、可以发布班级通知、班级相册；
+3、文字发布在班级通知，有效期为 1 天；图片发布到班级主窗口，有效期为 7 天
 
 ```
 
@@ -189,14 +189,14 @@ volume | int | 音量（百分比，0到100的整数）
 
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
-contentType | true | string | 内容类型：1-文章；2-相册；3-视频
+contentType | true | string | 内容类型：1-班级通知；2-班级相册
 schoolId | true | string | 学校ID 
 classId | true | string | 班级ID 
 title | true | string | 内容标题 
 content | true | string | 文章内容，或图片文件名，或视频文件名（上传后返回的文件名） 
-thumb | false | string | 发视频时有效，视频缩略图 
+thumb | false | string | 发视频时有效，视频缩略图（暂不能发送视频，字段无效）
 username | true | string | 发布人用户名
-blockId | true | string | 区块ID，上传图片时有效：1-小黑板；2-班级之星；3-主窗口
+blockId | true | string | 区块ID，上传图片时有效：1-小黑板；2-班级之星；3-主窗口，默认为3
 
 #### 返回结果
 
