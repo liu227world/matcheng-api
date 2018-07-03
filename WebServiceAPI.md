@@ -12,7 +12,6 @@
 *   [内容发布](#内容发布)
 *   [我发布的内容列表](#我发布的内容列表)
 
-*   [今日走班课表](#今日走班课表)
 *   [当前课程和学生列表](#当前课程和学生列表)
 *   [走班刷卡考勤](#走班刷卡考勤)
 
@@ -29,6 +28,10 @@
 *   [根据ID查询公告内容](#根据id查询公告内容)
 
 *   [查询班牌当前模式](#查询班牌当前模式)
+
+*   [查询今天的班级考勤信息](#查询今天的班级考勤信息)
+*   [查询班级课表](#查询班级课表)
+
 
 
 ## 检测设备编号是否存在
@@ -293,54 +296,6 @@ contentBody | string | 内容体：文章内容，或图片原图路径，或视
 contentThumb | string | 内容缩略图：类型为图片或视频时有效
 
 
-
-## 今日走班课表
-
-```
-请求方式：execute("DzbpCourseInfo","selectCdCourseService","classId=;","json");
-
-```
-
-#### 请求参数
-
-字段   |   是否必选    |   字段类型   |字段说明
-------  |  -----------|-------------|-----------
-classId | true | string | 班级ID
-
-#### 返回结果
-
-*** JSON示例 ***
-
-```
-
-{
-	"returnCode": "000",
-	"selectCdCourse": [{
-		"id": "1",
-		"codeName": "初三物理三班",
-		"weekDay": "5",
-		"classTime": "10:10-10:50",
-		"cdid": "1003100110011002",
-		"orderNumber": "1",
-		"teacherName": "梁静静",
-		"teacherId": ""
-	}]
-}
-
-```
-
-#### 返回参数 selectCdCourse
-
-字段    |   字段类型   |字段说明
------------|-------------|-----------
-id | string | 课程开始时间
-codeName | string | 课程名称
-weekDay | string | 星期几：1到7
-classTime | string | 课程时间
-cdid | string | 班级ID
-orderNumber | string | 第几节课
-teacherName | string | 教师姓名
-teacherId | string | 教师username（值为空）
 
 
 ## 当前课程和学生列表
@@ -946,3 +901,98 @@ styleName | string | 模式名称
 contentType | string | 公告类型，在公告模式下有效：1-文章；2-图片
 
 *** 其他参数略 ***
+
+
+
+## 查询今天的班级考勤信息
+
+```
+请求方式：execute("DzbpAttendanceInfo","selectAttendanceListService","classId=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | true | string | 教学班级ID
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+    "returnCode": "000",
+    "selectAttendanceList": [{
+        "STUDENTID": "1003170227105333596",
+        "STUDENTNAME": "阿拉丁",
+        "FIRSTTIME": "",
+        "LASTTIME": ""
+    }],
+    "selectLeaveList": []
+}
+
+```
+
+#### 返回参数 selectAttendanceList
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+STUDENTID | string | 学生用户名
+STUDENTNAME | string | 学生姓名
+FIRSTTIME | string | 当天第一次刷卡时间
+LASTTIME | string | 当天最后一次刷卡时间
+
+
+## 查询班级课表
+
+```
+请求方式：execute("DzbpDeviceInfo","selectClassCourseService","classId=;","json");
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+classId | true | string | 班级ID
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+{
+    "returnCode": "000",
+    "selectCdCourse": [{
+        "CODENAME": "语文",
+        "ORDERNUMBER": "1",
+        "TEACHERID": "17757975912",
+        "TEACHERNAME": "吕鑫华",
+        "WEEK_DAY": "周一",
+        "CLASSID": "1003100110011002",
+        "STARTTIME": "08:00",
+        "ENDTIME": "08:45",
+        "IMG": "icon_11.png"
+    }]
+}
+
+```
+
+#### 返回参数 selectCdCourse
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+CODENAME | string | 课程名称
+WEEK_DAY | string | 星期几
+CLASSID | string | 班级ID
+ORDERNUMBER | string | 第几节课
+TEACHERNAME | string | 教师姓名
+TEACHERID | string | 教师username
+STARTTIME | string | 开始时间
+ENDTIME | string | 结束时间
+IMG | string | 课程图标
+
