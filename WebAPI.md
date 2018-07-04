@@ -892,3 +892,168 @@ username | true | string | 用户名
 image  | string | 图片名称
 thumb | string | 缩略图路径 
 original | string | 原图路径
+
+
+
+## 添加通知
+
+```
+请求地址：/v1/notice/?username={username}
+
+请求类型：POST
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |   字段说明
+------  |  --------- | ----------- |  -----------
+username | true | string | 用户名，作为param参数调用
+schoolId | true | string | 学校ID
+classIds | true | string | 班级ID，多个以逗号","隔开
+content | true | string | 通知内容
+
+#### 返回结果
+
+*** 返回值为空 ***
+
+
+## 向班级相册添加图片
+
+```
+请求地址：/v1/picture/?username={username}
+
+请求类型：POST
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |   字段说明
+------  |  --------- | ----------- |  -----------
+username | true | string | 用户名，作为param参数调用
+schoolId | true | string | 学校ID 
+classIds | true | string | 班级ID，多个以逗号","隔开
+titles | true | string | 多张图片的标题，以逗号","隔开
+images | true | string | 多张图片的路径，以逗号","隔开
+blockId | true | int | 班牌区块ID，1-小黑板；2-班级之星；3-主窗口
+
+#### 返回结果
+
+*** 返回值为空 ***
+
+
+## 查询我发布的通知列表
+
+```
+请求地址：/v1/notice/{username}/notices?page={page}&limit={limit}
+
+请求类型：GET
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+username | true | string | 发布人用户名
+page | false | int | 分页页数 
+limit | false | int | 每页显示条数
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+[
+    {
+        "id": 1,
+        "schoolId": "10010001",
+        "schoolName": "中国儿童早教基地",
+        "classIds": "1001000110010002,1001000110010010,1001000110011001,1001000110011002",
+        "classNames": "周六(2)班,周六(1)班,平时(1)班,平时(2)班",
+        "content": "发送一条学校通知",
+        "publishUsername": "18790591074",
+        "publishName": "系统管理员",
+        "beginTime": "2018-05-05 09:00:00",
+        "endTime": "2018-06-09 09:00:00",
+        "createTime": "2018-05-29 14:17:44",
+        "updateTime": "2018-05-29 14:20:13",
+        "deleted": 0
+    }
+]
+
+```
+
+#### 返回参数
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | int | ID
+schoolId  | string | 学校ID
+schoolName | string | 学校名称 
+classIds | string | 班级ID，多个以逗号隔开
+classNames | string | 班级名称，多个以逗号隔开
+content | string | 通知内容
+publishUsername | string | 发布人用户名
+publishName | string | 发布人姓名
+beginTime | string | 展示开始时间
+endTime | string | 展示结束时间
+createTime | string | 创建时间
+updateTime | string | 修改时间
+deleted | int | 是否删除：0-否；1-是
+
+
+
+## 查询我发布的图片列表
+
+```
+请求地址：/v1/picture/{username}/pictures?page={page}&limit={limit}
+
+请求类型：GET
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+username | true | string | 发布人用户名
+page | false | int | 分页页数 
+limit | false | int | 每页显示条数
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+[
+    {
+        "id": 1,
+        "schoolId": "10010001",
+        "schoolName": "中国儿童早教基地",
+        "classIds": "1001000110010002,1001000110010010,1001000110011001,1001000110011002",
+        "classNames": "周六(2)班,周六(1)班,平时(1)班,平时(2)班",
+        "title": "图片修改1",
+        "image": "/upload/image1.jpg",
+        "publishUsername": "18790591074",
+        "publishName": "系统管理员",
+        "createTime": "2018-05-22 06:24:43",
+        "updateTime": "2018-05-22 06:28:38"
+    }
+]
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | int | ID
+schoolId  | string | 学校ID
+schoolName | string | 学校名称 
+classIds | string | 班级ID，多个以逗号隔开
+classNames | string | 班级名称，多个以逗号隔开
+title | string | 文章标题
+image | string | 文章内容
+publishUsername | string | 发布人用户名
+publishName | string | 发布人姓名
+createTime | string | 创建时间
+updateTime | string | 修改时间

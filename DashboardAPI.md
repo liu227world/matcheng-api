@@ -200,6 +200,74 @@ pageSize | int | 总页数
 first | boolean | 是否首页
 last | boolean | 是否尾页
 
+## 查询学生列表
+
+```
+请求地址：/student/list
+
+请求类型：GET
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+name | false | string | 学生姓名 
+schoolId | false | string | 学校ID 
+classId | false | string | 班级ID 
+page | false | int | 分页页数 
+limit | false | int | 每页显示条数
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+[
+    {
+        "cuid": "17080319110406692",
+        "sname": "白依琳",
+        "sex": "1",
+        "age": "0",
+        "ethnic": "汉",
+        "snumber": "1006170819110406399",
+        "ofuserName": "1006170819110406399",
+        "createTime": "2017-08-19 11:04:07",
+        "birthday": "1999-12-18 00:00:00",
+        "tenantId": "15306811177",
+        "classId": "1006100710021009",
+        "className": "初三(6)班",
+        "schoolId": "10061007",
+        "schoolName": "杭州市富阳区富春第三中学"
+    }
+]
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+cuid | string | 学生ID
+sname  | string | 学生姓名
+sex | string | 性别：0-未知；1-女；2-男
+age | string | 年龄
+ethnic | string | 民族
+snumber | string | 学号
+ofuserName | string | 用户名
+createTime | string | 创建时间
+birthday | string | 生日
+tenantId | string | 集团ID
+classId | string | 班级ID
+className | string | 班级名称
+schoolId | string | 学校ID
+schoolName | string | 学校名称
+
+
+## 查询学生列表分页对象
+
+*** 略 ***
 
 ## 添加菜单
 
