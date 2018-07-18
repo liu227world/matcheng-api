@@ -976,7 +976,8 @@ classId | true | string | 班级ID
         "CLASSID": "1003100110011002",
         "STARTTIME": "08:00",
         "ENDTIME": "08:45",
-        "IMG": "icon_11.png"
+        "IMG": "icon_11.png",
+        "type": "2"
     }]
 }
 
@@ -995,4 +996,5 @@ TEACHERID | string | 教师username
 STARTTIME | string | 开始时间
 ENDTIME | string | 结束时间
 IMG | string | 课程图标
+type | string | 课程类型：1-教学班级课表；2-走班课表
 
