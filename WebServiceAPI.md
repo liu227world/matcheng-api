@@ -330,6 +330,7 @@ classId | true | string | 班级ID
 		"ORDERNUMBER": 2,
 		"TEACHERID": "17070124020620699",
 		"TEACHERNAME": "杨小拉"
+		"curriculumId": 2
 	}],
 	"selectStuList": [{
 		"byCard": "0",
@@ -360,6 +361,7 @@ WEEKDAY | string | 星期几（1到7）
 ORDERNUMBER | string | 第几节课
 TEACHERID | string | 教师ID
 TEACHERNAME | string | 教师姓名
+curriculumId | int | 走班课程表ID
 
 #### 返回参数 selectStuList
 
@@ -389,7 +391,7 @@ CARDID | string |
 
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
-classId | true | string | 班级ID
+curriculumId | true | string | 走班课表ID
 cardId | true | string | 签到卡号
 signTime | true | string | 考勤时间，格式为：1970-01-01 10:00:00
 image | true | string | 上传的签到图片名
@@ -977,7 +979,8 @@ classId | true | string | 班级ID
         "STARTTIME": "08:00",
         "ENDTIME": "08:45",
         "IMG": "icon_11.png",
-        "type": "2"
+        "type": "2",
+        "curriculumId": "2"
     }]
 }
 
@@ -997,4 +1000,5 @@ STARTTIME | string | 开始时间
 ENDTIME | string | 结束时间
 IMG | string | 课程图标
 type | string | 课程类型：1-教学班级课表；2-走班课表
+curriculumId | string | 课表ID
 
