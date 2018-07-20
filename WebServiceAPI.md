@@ -298,11 +298,11 @@ contentThumb | string | 内容缩略图：类型为图片或视频时有效
 
 
 
-## 当前课程和学生列表
+## 走班课表课程和学生列表
 
 
 ```
-请求方式：execute("DzbpCourseInfo","selectCourseStuService","classId=;","json");
+请求方式：execute("DzbpCourseInfo","selectCourseStuService","curriculumId=;","json");
 请求说明：取当前走班课程，或半小时内开始上课的走班课程
 
 ```
@@ -311,7 +311,7 @@ contentThumb | string | 内容缩略图：类型为图片或视频时有效
 
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
-classId | true | string | 班级ID
+curriculumId | true | string | 走班课表ID
 
 #### 返回结果
 
