@@ -33,6 +33,7 @@
 *   [向班级相册添加图片](#向班级相册添加图片)
 *   [查询我发布的通知列表](#查询我发布的通知列表)
 *   [查询我发布的图片列表](#查询我发布的图片列表)
+*   [我的消息对话](#我的消息对话)
 
 
 ## 接口错误说明
@@ -1061,3 +1062,68 @@ publishUsername | string | 发布人用户名
 publishName | string | 发布人姓名
 createTime | string | 创建时间
 updateTime | string | 修改时间
+
+## 我的消息对话
+
+*   学生刷卡拍照和家长在app发给学生的留言
+
+```
+请求地址：/v1/message/myMessages?username={username}&page={page}&limit={limit}
+
+请求类型：GET
+```
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+username | true | string | 用户名
+page | false | int | 分页页数 
+limit | false | int | 每页显示条数
+
+#### 返回结果
+
+*** JSON示例 ***
+
+```
+
+[
+    {
+        "id": 1,
+        "schoolId": "10010001",
+        "classId": "1001000110010002",
+        "senderUsername": "1001150925154536025",
+        "senderName": "安辰朗",
+        "receiverUsername": "1001150925154537031",
+        "receiverName": "张桐赫",
+        "msgType": 1,
+        "msgSource": 1,
+        "readStatus": 0,
+        "readTime": "",
+        "createTime": "2018-05-22 10:41:42",
+        "updateTime": "2018-05-22 10:41:42",
+        "deleted": 0,
+        "msgContent": "这是发送为班牌的文本消息"
+    }
+]
+
+```
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+id | int | 菜单ID
+schoolId  | string | 学校ID
+classId | string | 班级ID 
+senderUsername | string | 发送人username
+senderName | string | 发送人姓名
+receiverUsername | string | 接收人username
+receiverName | string | 接收人姓名
+msgType | string | 消息类型：1-文本消息；2-图片消息；默认1
+msgSource | string | 消息发送平台：1-APP；2-电子班牌；默认1
+readStatus | int | 是否已读：0-未读；1-已读；默认0
+readTime | string | 读取时间
+createTime | string | 创建时间
+updateTime | string | 修改时间
+deleted | int | 是否删除：0-否；1-是
+msgContent | string | 消息内容：文本消息是文本内容，图片消息是图片路径
