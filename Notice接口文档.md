@@ -4,30 +4,41 @@
 
 ## 目录
 
+*   [发送或修改通知](#发送或修改通知)
+*   [发送人的通知类型列表](#发送人的通知类型列表)
+*   [接收人的通知类型列表](#接收人的通知类型列表)
+*   [根据类型获取发通知列表](#根据类型获取发通知列表)
+*   [根据类型获取收通知列表](#根据类型获取收通知列表)
+*   [查询发送详情](#查询发送详情)
+*   [查询接收详情](#查询接收详情)
+*   [活动会议签到](#活动会议签到)
+*   [根据发送的通知获取收通知列表](#根据发送的通知获取收通知列表)
+*   [设置提醒时间](#设置提醒时间)
+
 
 ## 发送或修改通知
 
 ```
 
-	var mcCode = ''
-    var senderCode = '1'
-    var draft = 1;
-    var sendType = 1;
-    var sendTime = '2018-09-10 10:00:00'
-    var remind = 30;
-    var noticeType = 1;
-    var noticeTime = '2018-09-11 11:00:00'
-    var noticeAddress = '会议室'
-    var noticeContent = '教学安排'
-    var noticeNode = '终于'
-    var noticeImages = ''
-    var receiveUsers = '1'
+var mcCode = ''
+var senderCode = '1'
+var draft = 1;
+var sendType = 1;
+var sendTime = '2018-09-10 10:00:00'
+var remind = 30;
+var noticeType = 1;
+var noticeTime = '2018-09-11 11:00:00'
+var noticeAddress = '会议室'
+var noticeContent = '教学安排'
+var noticeNode = '终于'
+var noticeImages = ''
+var receiveUsers = '1'
 
-    NoticeService.update(mcCode, senderCode, draft, sendType, sendTime,
-        remind, noticeType, noticeTime, noticeAddress,
-        noticeContent, noticeNode, noticeImages, receiveUsers, function(res){
-            console.info( res );
-    });
+NoticeService.update(mcCode, senderCode, draft, sendType, sendTime,
+    remind, noticeType, noticeTime, noticeAddress,
+    noticeContent, noticeNode, noticeImages, receiveUsers, function(res){
+        console.info( res );
+});
 
 ```
 
@@ -51,16 +62,15 @@ receiveUsers | true | string | 接收人列表，多个以逗号隔开
 
 
 
-
 ## 发送人的通知类型列表
 
 ```
 
-	var senderCode = '1';
+var senderCode = '1';
 
-	NoticeService.sendNoticeTypeList(senderCode,function(res){
-        console.info( res );
-    });
+NoticeService.sendNoticeTypeList(senderCode,function(res){
+    console.info( res );
+});
 
 ```
 
@@ -84,11 +94,11 @@ content | string | 类型下的第一条数据内容，html格式
 
 ```
 
-	var receiverCode = '1';
+var receiverCode = '1';
 
-	NoticeService.sendNoticeTypeList(receiverCode,function(res){
-        console.info( res );
-    });
+NoticeService.sendNoticeTypeList(receiverCode,function(res){
+    console.info( res );
+});
 
 ```
 
@@ -108,19 +118,18 @@ msg | string | 类型名称
 content | string | 类型下的第一条数据内容，html格式
 
 
-
 ## 根据类型获取发通知列表
 
 ```
 
-	var userCode = '1';
-	var typeCode = '1';
-	var page = 0;
-	var limit = 0;
+var userCode = '1';
+var typeCode = '1';
+var page = 0;
+var limit = 0;
 
-	NoticeService.noticeSendListByType(userCode, typeCode, page, limit,function(res){
-		console.info( res );
-	});
+NoticeService.noticeSendListByType(userCode, typeCode, page, limit,function(res){
+	console.info( res );
+});
 
 ```
 
@@ -164,14 +173,14 @@ field20 | string | 创建时间
 
 ```
 
-	var userCode = '1';
-	var typeCode = '1';
-	var page = 0;
-	var limit = 0;
+var userCode = '1';
+var typeCode = '1';
+var page = 0;
+var limit = 0;
 
-	NoticeService.noticeReceiveListByType('1','1','0','0',function(res){
-        console.info( res );
-    });
+NoticeService.noticeReceiveListByType('1','1','0','0',function(res){
+    console.info( res );
+});
 
 ```
 
@@ -209,11 +218,11 @@ field14 | string | 创建时间/接收时间
 
 ```
 
-	var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
+var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
 
-	NoticeService.noticeSendByCode(sendCode,function(res){
-        console.info( res );
-    });
+NoticeService.noticeSendByCode(sendCode,function(res){
+    console.info( res );
+});
 
 ```
 
@@ -248,15 +257,16 @@ field18 | string | 发送数量
 field19 | string | 签到数量
 field20 | string | 创建时间
 
+
 ## 查询接收详情
 
 ```
 
-	var receiveCode = 'abd7575b3c734d7797f1aa23e0e62b0e';
+var receiveCode = 'abd7575b3c734d7797f1aa23e0e62b0e';
 
-	NoticeService.noticeReceiveByCode(receiveCode,function(res){
-        console.info( res );
-    });
+NoticeService.noticeReceiveByCode(receiveCode,function(res){
+    console.info( res );
+});
 
 ```
 #### 请求参数
@@ -284,17 +294,19 @@ field12 | string | 是否签到（1-是；0-否）
 field13 | string | 签到时间
 field14 | string | 创建时间/接收时间
 
+
+
 ## 活动会议签到
 
 ```
 
-	var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
-	var userCode = '1';
-	var signTime = '2018-09-11 10:30:12';
+var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
+var userCode = '1';
+var signTime = '2018-09-11 10:30:12';
 
-	NoticeService.noticeSign(sendCode,userCode,signTime,function(res){
-        console.info( res );
-    });
+NoticeService.noticeSign(sendCode,userCode,signTime,function(res){
+    console.info( res );
+});
 
 ```
 #### 请求参数
@@ -305,17 +317,19 @@ sendCode | true | string | 通知code
 userCode | true | string | 用户code
 signTime | true | string | 签到时间
 
+
+
 ## 根据发送的通知获取收通知列表
 
 ```
 
-	var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
-	var page = 0;
-	var limit = 0;
+var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
+var page = 0;
+var limit = 0;
 
-	NoticeService.noticeReceiveListBySend(sendCode,page,limit,function(res){
-        console.info( res );
-    });
+NoticeService.noticeReceiveListBySend(sendCode,page,limit,function(res){
+    console.info( res );
+});
 
 ```
 #### 请求参数
@@ -349,12 +363,12 @@ field14 | string | 创建时间/接收时间
 
 ```
 
-	var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
-	var minute = 30;
+var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
+var minute = 30;
 
-	NoticeService.noticeRemind(sendCode,minute,function(res){
-        console.info( res );
-    });
+NoticeService.noticeRemind(sendCode,minute,function(res){
+    console.info( res );
+});
 
 ```
 #### 请求参数
