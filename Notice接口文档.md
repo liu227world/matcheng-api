@@ -29,10 +29,10 @@ var remind = 30;
 var noticeType = 1;
 var noticeTime = '2018-09-11 11:00:00'
 var noticeAddress = '会议室'
-var noticeContent = '教学安排'
+var noticeContent = '教学安排aaaaaaaaaaaaaa'
 var noticeNode = '终于'
 var noticeImages = ''
-var receiveUsers = '1'
+var receiveUsers = '[{"code":"1","name":"张三"}]'
 
 NoticeService.update(mcCode, senderCode, draft, sendType, sendTime,
     remind, noticeType, noticeTime, noticeAddress,
@@ -58,7 +58,7 @@ noticeAddress | true | string | 地点
 noticeContent | true | string | 内容 
 noticeNode | true | string | 注意事项 
 noticeImages | true | string | 图片列表 
-receiveUsers | true | string | 接收人列表，多个以逗号隔开
+receiveUsers | true | string | 接收人列表，格式为[{"code":"1","name":"张三"}]
 
 
 
@@ -88,6 +88,7 @@ senderCode | true | string | 发送人code
 code | int | 类型唯一标志
 msg | string | 类型名称
 content | string | 类型下的第一条数据内容，html格式
+contentCode | string | 类型下的第一条数据code
 
 
 ## 接收人的通知类型列表
@@ -116,6 +117,7 @@ receiverCode | true | string | 接收人code
 code | int | 类型唯一标志
 msg | string | 类型名称
 content | string | 类型下的第一条数据内容，html格式
+contentCode | string | 类型下的第一条数据code
 
 
 ## 根据类型获取发通知列表
