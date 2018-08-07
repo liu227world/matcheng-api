@@ -97,7 +97,7 @@ contentCode | string | 类型下的第一条数据code
 
 var receiverCode = '1';
 
-NoticeService.sendNoticeTypeList(receiverCode,function(res){
+NoticeService.receiveNoticeTypeList(receiverCode,function(res){
     console.info( res );
 });
 
