@@ -348,8 +348,6 @@ NoticeService.noticeReceiveListBySend(sendCode,function(res){
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
 sendCode | true | string | 通知code
-page | true | int | 第几页 （当前无效）
-limit | true | int | 每页几条 （当前无效）
 
 #### 返回参数
 
