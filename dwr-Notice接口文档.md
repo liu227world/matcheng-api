@@ -137,10 +137,10 @@ contentCode | string | 类型下的第一条数据code
 
 var userCode = '1';
 var typeCode = '1';
-var page = 0;
-var limit = 0;
+var page = 1;
+var size = 10;
 
-NoticeService.noticeSendListByType(userCode, typeCode, page, limit,function(res){
+NoticeService.noticeSendListByType(userCode, typeCode, page, size,function(res){
 	console.info( res );
 });
 
@@ -152,8 +152,8 @@ NoticeService.noticeSendListByType(userCode, typeCode, page, limit,function(res)
 ------  |  -----------|-------------|-----------
 userCode | true | string | 用户code
 typeCode | true | string | 类型code
-page | true | int | 第几页 （当前无效）
-limit | true | int | 每页几条 （当前无效）
+page | true | int | 第几页
+size | true | int | 每页几条
 
 
 #### 返回参数
@@ -188,10 +188,10 @@ field20 | string | 创建时间
 
 var userCode = '1';
 var typeCode = '1';
-var page = 0;
-var limit = 0;
+var page = 1;
+var size = 10;
 
-NoticeService.noticeReceiveListByType('1','1','0','0',function(res){
+NoticeService.noticeReceiveListByType(userCode,typeCode,page,size,function(res){
     console.info( res );
 });
 
@@ -337,10 +337,8 @@ signTime | true | string | 签到时间
 ```
 
 var sendCode = 'e0d4f84bf4ae4d46a07ba66730f1aa2a';
-var page = 0;
-var limit = 0;
 
-NoticeService.noticeReceiveListBySend(sendCode,page,limit,function(res){
+NoticeService.noticeReceiveListBySend(sendCode,function(res){
     console.info( res );
 });
 
