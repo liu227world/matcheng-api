@@ -20,6 +20,7 @@ NoticeService._path = 'http://www.wojiaxiaozhu.cn/mecwish/dwr';
 *   [接收人的通知类型列表](#接收人的通知类型列表)
 *   [根据类型获取发通知列表](#根据类型获取发通知列表)
 *   [根据类型获取收通知列表](#根据类型获取收通知列表)
+*   [查询一个通知类型一天的通知列表](#查询一个通知类型一天的通知列表)
 *   [查询发送详情](#查询发送详情)
 *   [查询接收详情](#查询接收详情)
 *   [活动会议签到](#活动会议签到)
@@ -205,6 +206,49 @@ userCode | true | string | 用户code
 typeCode | true | string | 类型code
 page | true | int | 第几页 （当前无效）
 limit | true | int | 每页几条 （当前无效）
+
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+field1 | string | ID
+field2 | string | mcCode
+field3 | string | status
+field4 | string | 接收人code
+field5 | string | 接收人姓名
+field6 | string | 通知类型
+field7 | string | 时间
+field8 | string | 地点
+field9 | string | 内容
+field10 | string | 提醒/科目
+field11 | string | 图片列表
+field12 | string | 是否签到（1-是；0-否）
+field13 | string | 签到时间
+field14 | string | 创建时间/接收时间
+
+
+## 查询一个通知类型一天的通知列表
+
+```
+
+var userCode = '1';
+var noticeType = 1;
+var day = '1990-08-08';
+
+NoticeService.oneDayNoticeReceive(userCode,noticeType,day,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+userCode | true | string | 用户code
+noticeType | true | int | 类型code
+day | true | string | 日期，格式为1990-08-08
 
 
 #### 返回参数

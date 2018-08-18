@@ -94,3 +94,23 @@ field9 | string | 组织名称
 field10 | string | 组织+部门名称
 field11 | string | 部门排序（按正序排序）
 
+
+## 查询我所在班级的列表
+
+```
+
+var userCode = '580';
+
+ContactsService.getTeachers(userCode,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+userCode | true | string | 用户code
+
+
