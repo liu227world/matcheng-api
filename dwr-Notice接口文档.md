@@ -20,6 +20,7 @@ NoticeService._path = 'http://www.wojiaxiaozhu.cn/mecwish/dwr';
 *   [接收人的通知类型列表](#接收人的通知类型列表)
 *   [根据类型获取发通知列表](#根据类型获取发通知列表)
 *   [根据类型获取收通知列表](#根据类型获取收通知列表)
+*   [作业列表](#作业列表)
 *   [查询一个通知类型一天的通知列表](#查询一个通知类型一天的通知列表)
 *   [查询发送详情](#查询发送详情)
 *   [查询接收详情](#查询接收详情)
@@ -226,6 +227,35 @@ field11 | string | 图片列表
 field12 | string | 是否签到（1-是；0-否）
 field13 | string | 签到时间
 field14 | string | 创建时间/接收时间
+
+## 作业列表
+
+```
+var userCode = 'd1b360e62f074c3f8c69bd765adfe6a0'
+var page = 1
+var size = 100
+NoticeService.homeworkList(userCode, page, size,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+userCode | true | string | 用户code
+page | true | int | 第几页
+size | true | int | 每页显示几条
+
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+field1 | string | 接收人code
+field2 | string | 日期
+field3 | string | 科目内容
 
 
 ## 查询一个通知类型一天的通知列表
