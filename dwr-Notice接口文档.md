@@ -27,6 +27,7 @@ NoticeService._path = 'http://www.wojiaxiaozhu.cn/mecwish/dwr';
 *   [活动会议签到](#活动会议签到)
 *   [根据发送的通知获取收通知列表](#根据发送的通知获取收通知列表)
 *   [设置提醒时间](#设置提醒时间)
+*   [添加留言](#添加留言)
 
 
 ## 发送或修改通知
@@ -102,6 +103,7 @@ code | int | 类型唯一标志
 msg | string | 类型名称
 content | string | 类型下的第一条数据内容，html格式
 contentCode | string | 类型下的第一条数据code
+length | string | 所有通知数量
 
 
 ## 接收人的通知类型列表
@@ -131,6 +133,7 @@ code | int | 类型唯一标志
 msg | string | 类型名称
 content | string | 类型下的第一条数据内容，html格式
 contentCode | string | 类型下的第一条数据code
+contentDate | string | 类型下的第一条数据时间，格式为：1990-09-09
 
 
 ## 根据类型获取发通知列表
@@ -343,6 +346,7 @@ field17 | string | 接收人
 field18 | string | 发送数量
 field19 | string | 签到数量
 field20 | string | 创建时间
+field0 | string | 留言列表
 
 
 ## 查询接收详情
@@ -380,6 +384,7 @@ field11 | string | 图片列表
 field12 | string | 是否签到（1-是；0-否）
 field13 | string | 签到时间
 field14 | string | 创建时间/接收时间
+field0 | string | 留言列表
 
 
 
@@ -460,3 +465,29 @@ NoticeService.noticeRemind(sendCode,minute,function(res){
 ------  |  -----------|-------------|-----------
 sendCode | true | string | 通知code
 minute | true | int | 提前几分钟提醒
+
+
+## 添加留言
+
+```
+var userCode = '433b9b130402441ab2fb8f7a2691b798';
+var mcCode = null;
+var sendCode = 'df92995c72d84178babcf867ca53c3b9';
+var parentCode = 'b7e51e79905e4939b04563e4646b4c34';
+var content = '看不懂什么意思';
+var images = '/upload/image.jpg';
+NoticeService.comment(userCode,mcCode,sendCode,parentCode,content,images,function(res){
+    console.info( res );
+});
+
+```
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+userCode | true | string | 留言人code
+mcCode | false | string | 留言code,值为空添加，值不为空修改
+sendCode | true | string | 通知发送code
+parentCode | false | string | 回复的留言code
+content | true | string | 留言内容
+images | false | string | 留言图片
