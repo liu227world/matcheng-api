@@ -28,6 +28,7 @@ NoticeService._path = 'http://www.wojiaxiaozhu.cn/mecwish/dwr';
 *   [根据发送的通知获取收通知列表](#根据发送的通知获取收通知列表)
 *   [设置提醒时间](#设置提醒时间)
 *   [添加留言](#添加留言)
+*   [删除一条通知](#删除一条通知)
 
 
 ## 发送或修改通知
@@ -302,6 +303,8 @@ field11 | string | 图片列表
 field12 | string | 是否签到（1-是；0-否）
 field13 | string | 签到时间
 field14 | string | 创建时间/接收时间
+field15 | string | 通知code
+field0 | string | 留言列表
 
 
 ## 查询发送详情
@@ -492,3 +495,21 @@ sendCode | true | string | 通知发送code
 parentCode | false | string | 回复的留言code
 content | true | string | 留言内容
 images | false | string | 留言图片
+
+
+## 删除一条通知
+
+```
+var userCode = '433b9b130402441ab2fb8f7a2691b798';
+var sendCode = 'df92995c72d84178babcf867ca53c3b9';
+NoticeService.remove(userCode,sendCode,function(res){
+    console.info( res );
+});
+
+```
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+userCode | true | string | 留言人code
+sendCode | true | string | 通知code
