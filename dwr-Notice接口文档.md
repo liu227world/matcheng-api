@@ -384,6 +384,7 @@ field11 | string | 图片列表
 field12 | string | 是否签到（1-是；0-否）
 field13 | string | 签到时间
 field14 | string | 创建时间/接收时间
+field15 | string | 发送表code
 field0 | string | 留言列表
 
 
