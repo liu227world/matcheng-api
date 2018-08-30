@@ -82,8 +82,9 @@ receiveUsers | true | string | 接收人列表，格式为[{"code":"1","name":"�
 ```
 
 var senderCode = '1';
+var roleCategory = 'teacher';
 
-NoticeService.sendNoticeTypeList(senderCode,function(res){
+NoticeService.sendNoticeTypeList(senderCode,roleCategory,function(res){
     console.info( res );
 });
 
@@ -94,6 +95,7 @@ NoticeService.sendNoticeTypeList(senderCode,function(res){
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
 senderCode | true | string | 发送人code
+roleCategory | true | string | 角色类型：teacher-教师；student-学生
 
 
 #### 返回参数
@@ -112,8 +114,9 @@ length | string | 所有通知数量
 ```
 
 var receiverCode = '1';
+var roleCategory = 'teacher';
 
-NoticeService.receiveNoticeTypeList(receiverCode,function(res){
+NoticeService.receiveNoticeTypeList(receiverCode,roleCategory,function(res){
     console.info( res );
 });
 
@@ -124,6 +127,7 @@ NoticeService.receiveNoticeTypeList(receiverCode,function(res){
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
 receiverCode | true | string | 接收人code
+roleCategory | true | string | 角色类型：teacher-教师；student-学生
 
 
 #### 返回参数
