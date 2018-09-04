@@ -114,3 +114,41 @@ ContactsService.getTeachers(userCode,function(res){
 userCode | true | string | 用户code
 
 
+## 查询我所在班级的教师列表
+
+```
+
+var userCode = '580';
+
+ContactsService.getTeachersByUser(userCode,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+userCode | true | string | 用户code
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+field1 | string | EmployeeId
+field2 | string | EmployeeCode
+field3 | string | 成员编号
+field4 | string | 姓名
+field5 | string | 职务
+field6 | string | 加入时间
+field7 | string | 用户名
+field8 | string | 邮箱
+field9 | string | 手机号
+field10 | string | 是否启用：1-启用；0-不启用
+field11 | string | 主页
+field12 | string | 用户code
+field13 | string | 用户param1（短号）
+field14 | string | 用户param2（工作号码）
+field15 | string | 用户param3
+
