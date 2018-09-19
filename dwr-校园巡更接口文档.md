@@ -72,18 +72,18 @@ mcCode | true | string | 位置code
 
 字段    |   字段类型   |字段说明
 -----------|-------------|-----------
-param1 | string | ID
-param2 | string | code
-param3 | string | 位置名称
-param4 | string | 位置说明
-param5 | string | 位置编码
-param6 | string | 位置标签
-param7 | string | 二维码地址
-param8 | string | 创建时间
-param9 | string | 修改时间
-param10 | string | 组织code
-param11 | string | 组织名称
-param12 | string | 所在线路code的列表
+field1 | string | ID
+field2 | string | code
+field3 | string | 位置名称
+field4 | string | 位置说明
+field5 | string | 位置编码
+field6 | string | 位置标签
+field7 | string | 二维码地址
+field8 | string | 创建时间
+field9 | string | 修改时间
+field10 | string | 组织code
+field11 | string | 组织名称
+field12 | string | 所在线路code的列表
 
 
 ## 根据位置编码查询位置
