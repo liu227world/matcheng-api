@@ -290,4 +290,86 @@ XmsPatrolService.removeObject(objectClass, mcCode,function(res){
 mcCode | true | string | 线路code
 
 
+## 添加或修改规则
 
+```
+var objectClass = 'SaveRule';
+var mcCode = '';
+var param1 = '7941b4a55c644f1b848a430301e4f8b7';
+var param2 = '2018-09-20 12:00:00';
+var param3 = '2018-09-20 15:00:00';
+var param4 = '86400000';
+var param5 = '1';
+var param6 = '2018-09-30 15:00:00';
+XmsPatrolService.saveObject(objectClass, mcCode, param1, param2, param3, param4, param5, param6, null, null, null, null, null, null, null, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+mcCode | true | string | 规则code，值为空时添加，不为空时修改
+param1 | true | string | 线路code
+param2 | true | string | 开始时间，格式为 yyyy-MM-dd HH:mm:ss
+param3 | true | string | 结束时间，格式为 yyyy-MM-dd HH:mm:ss
+param4 | true | string | 循环周期，单位：ms
+param5 | true | string | 巡更方式：1-一人扫；2-每个人必须扫
+param6 | true | string | 关闭时间，格式为 yyyy-MM-dd HH:mm:ss
+
+
+## 根据线路查询规则列表
+
+```
+var objectClass = 'GetRuleList';
+var filter = 'route=?'
+var param1 = '7941b4a55c644f1b848a430301e4f8b7';
+XmsPatrolService.getObjects(objectClass, null, filter, param1, null, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+param1 | true | string | 线路code
+
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+field1 | string | ID
+field2 | string | code
+field3 | string | 开始时间
+field4 | string | 结束时间
+field5 | string | 关闭时间
+field6 | string | 周期
+field7 | string | 巡更方式：1-一人扫；2-每个人必须扫
+field8 | string | 线路code
+field9 | string | 线路名称
+field10 | string | 创建时间
+field11 | string | 修改时间
+
+
+## 删除规则
+已巡更的规则不能删除
+
+```
+var objectClass = 'RemoveRule';
+var mcCode = 'e091b5fa335d42e3beb302f37394db7a'
+XmsPatrolService.removeObject(objectClass, mcCode,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+mcCode | true | string | 规则code
