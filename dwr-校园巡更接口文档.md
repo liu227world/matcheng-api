@@ -84,6 +84,7 @@ field9 | string | 修改时间
 field10 | string | 组织code
 field11 | string | 组织名称
 field12 | string | 所在线路code的列表
+field13 | string | 所在线路名称的列表
 
 
 ## 根据位置编码查询位置
@@ -174,4 +175,115 @@ XmsPatrolService.removeObject(objectClass, mcCode,function(res){
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
 mcCode | true | string | 位置code
+
+
+## 添加或修改线路
+
+```
+var objectClass = 'SaveRoute';
+var mcCode = '7941b4a55c644f1b848a430301e4f8b7';
+var param1 = 'aa3533f514c049bf868849718b9b9844';
+var param2 = '卓信大厦消防检查';
+var param3 = '所有消防栓检查、消防警报检查等';
+var param4 = 'ea95d84c52db4da1a6bfb92dc127a1f7,fda8b2dfa6014c1faa95150bc1f15bc6';
+var param5 = '5e995a4b884743708891343dc562889c,f45f572b166745feae8f02ab37676582';
+    XmsPatrolService.saveObject(objectClass, mcCode, param1, param2, param3, param4, param5, null, null, null, null, null, null, null, null, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+mcCode | true | string | 位置code，值为空时添加，不为空时修改
+param1 | true | string | 组织code
+param2 | true | string | 线路名称
+param3 | true | string | 线路说明
+param4 | true | string | 扫码人code列表
+param5 | true | string | 位置code列表
+
+
+## 查询线路
+
+```
+var objectClass = 'GetRoute';
+var filter = 'mcCode=?'
+var mcCode = '7941b4a55c644f1b848a430301e4f8b7';
+XmsPatrolService.getObject(objectClass, filter, mcCode, null, null, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+mcCode | true | string | 线路code
+
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+field1 | string | ID
+field2 | string | code
+field3 | string | 线路名称
+field4 | string | 线路说明
+field5 | string | 创建时间
+field6 | string | 修改时间
+field7 | string | 组织code
+field8 | string | 组织名称
+field9 | string | 扫码人code列表，多个以逗号隔开
+field10 | string | 扫码人姓名列表，多个以逗号隔开
+field11 | string | 位置code列表，多个以逗号隔开
+field12 | string | 位置名称列表，多个以逗号隔开
+
+
+## 根据学校和线路名称查询线路列表
+
+```
+var objectClass = 'GetRouteList';
+var filter = 'orgAndName=?'
+var param1 = 'aa3533f514c049bf868849718b9b9844';
+var param2 = '';
+XmsPatrolService.getObjects(objectClass, null, filter, param1, param2, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+param1 | true | string | 组织code
+param2 | true | string | 线路名称
+
+
+#### 返回参数
+见：[查询线路](#查询线路)
+
+
+## 删除线路
+已巡更的线路不能删除，删除时会同时删除线路规则、巡更人、巡更位置
+
+```
+var objectClass = 'RemoveRoute';
+var mcCode = '7941b4a55c644f1b848a430301e4f8b7'
+XmsPatrolService.removeObject(objectClass, mcCode,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+mcCode | true | string | 线路code
+
+
 
