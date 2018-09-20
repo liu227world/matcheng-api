@@ -356,6 +356,25 @@ field10 | string | 创建时间
 field11 | string | 修改时间
 
 
+## 查询我的当前有效规则列表
+
+```
+var objectClass = 'GetRuleList';
+var filter = 'userAndValid=?'
+var param1 = 'ea95d84c52db4da1a6bfb92dc127a1f7';
+XmsPatrolService.getObjects(objectClass, null, filter, param1, null, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+param1 | true | string | 用户code
+
+
 ## 删除规则
 已巡更的规则不能删除
 
