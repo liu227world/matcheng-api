@@ -27,7 +27,7 @@ XmsPatrolService._path = 'http://192.168.3.102:8081/mecwish/dwr';
 *   [删除线路](#删除线路)
 *   [添加或修改规则](#添加或修改规则)
 *   [根据线路查询规则列表](#根据线路查询规则列表)
-*   [查询我的当前有效规则列表](#查询我的当前有效规则列表)
+*   [查询我的今天的规则列表](#查询我的今天的规则列表)
 *   [删除规则](#删除规则)
 
 
@@ -360,7 +360,7 @@ field10 | string | 创建时间
 field11 | string | 修改时间
 
 
-## 查询我的当前有效规则列表
+## 查询我的今天的规则列表
 
 ```
 var objectClass = 'GetRuleList';
@@ -377,6 +377,23 @@ XmsPatrolService.getObjects(objectClass, null, filter, param1, null, null,functi
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
 param1 | true | string | 用户code
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+field1 | string | ID
+field2 | string | code
+field3 | string | 开始时间
+field4 | string | 结束时间
+field5 | string | 关闭时间
+field6 | string | 周期
+field7 | string | 巡更方式：1-一人扫；2-每个人必须扫
+field8 | string | 线路code
+field9 | string | 线路名称
+field10 | string | 创建时间
+field11 | string | 修改时间
+field12 | string | 是否可以巡更：1-可巡；0-不可巡
 
 
 ## 删除规则
