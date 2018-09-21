@@ -479,9 +479,11 @@ field8 | string | 创建时间
 field9 | string | 修改时间
 field10 | string | 组织code
 field11 | string | 组织名称
-field12 | string | 所在线路code的列表
-field13 | string | 所在线路名称的列表
-field14 | string | 是否已巡：1-已巡；0-未巡
+field12 | string | 是否已巡：1-已巡；0-未巡
+field13 | string | 规则code
+field14 | string | 线路code
+field15 | string | 线路名称
+field16 | string | 巡更时间段
 
 
 ## 用户一个规则下的可巡位置
