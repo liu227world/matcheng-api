@@ -367,7 +367,8 @@ field11 | string | 修改时间
 var objectClass = 'GetRuleList';
 var filter = 'userAndValid=?'
 var param1 = 'ea95d84c52db4da1a6bfb92dc127a1f7';
-XmsPatrolService.getObjects(objectClass, null, filter, param1, null, null,function(res){
+var param2 = '2018-09-21';
+XmsPatrolService.getObjects(objectClass, null, filter, param1, param2, null,function(res){
     console.info( res );
 });
 
@@ -378,6 +379,7 @@ XmsPatrolService.getObjects(objectClass, null, filter, param1, null, null,functi
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
 param1 | true | string | 用户code
+param2 | true | string | 指定查询日期，格式为yyyy-MM-dd
 
 #### 返回参数
 
