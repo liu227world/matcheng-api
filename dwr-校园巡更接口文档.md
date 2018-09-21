@@ -30,6 +30,8 @@ XmsPatrolService._path = 'http://192.168.3.102:8081/mecwish/dwr';
 *   [查询我的指定日期的规则列表](#查询我的指定日期的规则列表)
 *   [删除规则](#删除规则)
 *   [添加巡更记录](#添加巡更记录)
+*   [用户当前所有可巡位置](#用户当前所有可巡位置)
+*   [用户一个规则下的可巡位置](#用户一个规则下的可巡位置)
 
 
 ## 添加或修改位置
@@ -442,3 +444,66 @@ param3 | true | string | 巡更人code
 param4 | true | string | 巡更图片列表，多个以逗号隔开
 param5 | true | string | 巡更说明
 param6 | true | string | 巡更状态：0-异常；1-正常
+
+
+## 用户当前所有可巡位置
+
+```
+var objectClass = 'GetLocationList';
+var filter = 'validAll'
+var param1 = '1d09c24a38f840c5c9f1a34e1a44ccfd';
+XmsPatrolService.getObjects(objectClass, null, filter, param1, null, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+param1 | true | string | 用户code
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+field1 | string | ID
+field2 | string | code
+field3 | string | 位置名称
+field4 | string | 位置说明
+field5 | string | 位置编码
+field6 | string | 位置标签
+field7 | string | 二维码地址
+field8 | string | 创建时间
+field9 | string | 修改时间
+field10 | string | 组织code
+field11 | string | 组织名称
+field12 | string | 所在线路code的列表
+field13 | string | 所在线路名称的列表
+field14 | string | 是否已巡：1-已巡；0-未巡
+
+
+## 用户一个规则下的可巡位置
+
+```
+var objectClass = 'GetLocationList';
+var filter = 'validByRoute'
+var param1 = '1d09c24a38f840c5c9f1a34e1a44ccfd';
+var param2 = 'e091b5fa335d42e3beb302f37394db7a';
+XmsPatrolService.getObjects(objectClass, null, filter, param1, param2, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+param1 | true | string | 用户code
+param2 | true | string | 规则code
+
+#### 返回参数
+
+见：[用户当前所有可巡位置](#用户当前所有可巡位置)
