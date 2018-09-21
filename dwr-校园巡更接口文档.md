@@ -29,6 +29,7 @@ XmsPatrolService._path = 'http://192.168.3.102:8081/mecwish/dwr';
 *   [根据线路查询规则列表](#根据线路查询规则列表)
 *   [查询我的今天的规则列表](#查询我的今天的规则列表)
 *   [删除规则](#删除规则)
+*   [添加巡更记录](#添加巡更记录)
 
 
 ## 添加或修改位置
@@ -413,3 +414,31 @@ XmsPatrolService.removeObject(objectClass, mcCode,function(res){
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
 mcCode | true | string | 规则code
+
+
+## 添加巡更记录
+
+```
+var objectClass = 'SavePatrolDetail';
+var param1 = 'e091b5fa335d42e3beb302f37394db7a';
+var param2 = '595259';
+var param3 = 'ea95d84c52db4da1a6bfb92dc127a1f7';
+var param4 = '';
+var param5 = '我是巡更内容啊啊啊';
+var param6 = '1';
+XmsPatrolService.saveObject(objectClass, null, param1, param2, param3, param4, param5, param6, null, null, null, null, null, null, null, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+param1 | true | string | 规则code
+param2 | true | string | 位置SN
+param3 | true | string | 巡更人code
+param4 | true | string | 巡更图片列表，多个以逗号隔开
+param5 | true | string | 巡更说明
+param6 | true | string | 巡更状态：0-异常；1-正常
