@@ -449,7 +449,7 @@ param6 | true | string | 巡更状态：0-异常；1-正常
 ## 用户当前所有可巡位置
 
 ```
-var objectClass = 'GetLocationList';
+var objectClass = 'GetLocationVoList';
 var filter = 'validAll'
 var param1 = '1d09c24a38f840c5c9f1a34e1a44ccfd';
 XmsPatrolService.getObjects(objectClass, null, filter, param1, null, null,function(res){
@@ -487,7 +487,7 @@ field14 | string | 是否已巡：1-已巡；0-未巡
 ## 用户一个规则下的可巡位置
 
 ```
-var objectClass = 'GetLocationList';
+var objectClass = 'GetLocationVoList';
 var filter = 'validByRoute'
 var param1 = '1d09c24a38f840c5c9f1a34e1a44ccfd';
 var param2 = 'e091b5fa335d42e3beb302f37394db7a';
