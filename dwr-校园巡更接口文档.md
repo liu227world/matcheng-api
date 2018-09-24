@@ -509,3 +509,34 @@ param2 | true | string | 规则code
 #### 返回参数
 
 见：[用户当前所有可巡位置](#用户当前所有可巡位置)
+
+
+
+## 位置数量统计
+
+```
+var objectClass = 'totalByTimeRange';
+var orgCode = 'aa3533f514c049bf868849718b9b9844'
+var date1 = '2018-09-11';
+var date2 = '2018-09-31';
+XmsPatrolService.total(objectClass, orgCode, date1, date2,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+orgCode | true | string | 组织code
+date1 | true | string | 开始日期
+date2 | true | string | 结束日期
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+amount1 | string | 已巡更（正常）数量
+amount2 | string | 已巡更（异常）数量
+amount3 | string | 未巡更数量
