@@ -33,6 +33,7 @@ XmsPatrolService._path = 'http://192.168.3.102:8081/mecwish/dwr';
 *   [用户当前所有可巡位置](#用户当前所有可巡位置)
 *   [用户一个规则下的可巡位置](#用户一个规则下的可巡位置)
 *   [位置数量统计](#位置数量统计)
+*   [按天统计巡更详情](#按天统计巡更详情)
 
 
 ## 添加或修改位置
@@ -541,3 +542,45 @@ date2 | true | string | 结束日期
 amount1 | string | 已巡更（正常）数量
 amount2 | string | 已巡更（异常）数量
 amount3 | string | 未巡更数量
+
+
+## 按天统计巡更详情
+
+```
+var objectClass = 'GetPatrolDetailList';
+var filter = 'orgAndDay=?'
+var param1 = 'aa3533f514c049bf868849718b9b9844';
+var param2 = '2018-09-25';
+XmsPatrolService.getObjects(objectClass, null, filter, param1, param2, null,function(res){
+    console.info( res );
+});
+
+```
+
+#### 请求参数
+
+字段   |   是否必选    |   字段类型   |字段说明
+------  |  -----------|-------------|-----------
+param1 | true | string | 用户code
+param2 | true | string | 日期，格式为yyyy-MM-dd
+
+#### 返回参数
+
+字段    |   字段类型   |字段说明
+-----------|-------------|-----------
+routeCode | string | 线路code
+routeName | string | 线路名称
+routeIntro | string | 线路说明
+validTime | string | 规则巡更时间范围
+cycle | string | 循环周期，单位：ms
+ruleType | string | 巡更方式：1-一人扫；2-每个人必须扫
+closeTime | string | 关闭时间：关闭后规则不再可用
+locations.location | string | 位置点名称
+locations.tag | string | 位置标签
+locations.intro | string | 位置说明
+locations.detailStatus | string | 巡更状态
+locations.detailContent | string | 巡更内容
+locations.detailImages | string | 巡更图片
+locations.detailUserCode | string | 巡更人code
+locations.detailUserName | string | 巡更人姓名
+locations.detailTime | string | 巡更时间
