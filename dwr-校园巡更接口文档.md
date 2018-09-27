@@ -578,7 +578,7 @@ closeTime | string | 关闭时间：关闭后规则不再可用
 locations.location | string | 位置点名称
 locations.tag | string | 位置标签
 locations.intro | string | 位置说明
-locations.detailStatus | string | 巡更状态
+locations.detailStatus | string | 巡更状态，-1-未巡；0-已巡（异常）；1-已巡（正常）
 locations.detailContent | string | 巡更内容
 locations.detailImages | string | 巡更图片
 locations.detailUserCode | string | 巡更人code
