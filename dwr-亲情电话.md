@@ -62,3 +62,7 @@ field19 | string | 最后修改时间
 field20 | string | 
 field21 | string | 卡号（十六进制）
 field22 | string | 出售状态说明
+field23 | string | 亲情号码code
+field24 | string | 号码1
+field25 | string | 号码2
+field26 | string | 号码3
