@@ -239,7 +239,8 @@ cno | false | string | 学生卡号，刷卡数据，和 sno 二选一
         "gradeId": 1,
         "gradeName": "一年级",
         "schoolId": 1,
-        "schoolName": "演示学校"
+        "schoolName": "演示学校",
+        "message": "2019-09-11 12:00 XX班XX同学请假离校"
     }
 }
 ```
@@ -268,6 +269,7 @@ gradeId | string | 年级ID
 gradeName | string | 年级名称
 schoolId | string | 学校ID
 schoolName | string | 学校名称
+message | string | 请假文字说明
 
 
 ## 查询入校信息并修改状态
@@ -309,7 +311,8 @@ cno | false | string | 学生卡号，刷卡数据，和 sno 二选一
         "gradeId": 1,
         "gradeName": "一年级",
         "schoolId": 1,
-        "schoolName": "演示学校"
+        "schoolName": "演示学校",
+        "message": "2019-09-11 12:00 XX班XX同学请假离校"
     }
 }
 ```
@@ -338,3 +341,4 @@ gradeId | string | 年级ID
 gradeName | string | 年级名称
 schoolId | string | 学校ID
 schoolName | string | 学校名称
+message | string | 请假文字说明
