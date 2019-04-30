@@ -145,6 +145,9 @@ sn | true | string | 设备编号
 control | false | string | 人脸识别阈值
 brightness | false | int | 屏幕亮度，可选值为0到100的整数
 loudness | false | int | 音量，可选值为0到100的整数
+title | string | 设备名称
+category | int | 设备类型：1-离校终端；2-入校终端
+check | int | 主动检查设备信息：1-是；0-否
 faces | false | Array | 学生人脸更新信息：见参数faces
 
 ##### faces
@@ -212,7 +215,7 @@ faces | string | 人脸照片下载地址列表
 
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
-schoolId | true | int | 学校ID 
+sn | true | int | 设备编号  
 sno | false | string | 学生编号，刷脸数据，和 cno 二选一 
 cno | false | string | 学生卡号，刷卡数据，和 sno 二选一
 
@@ -282,7 +285,7 @@ schoolName | string | 学校名称
 
 字段   |   是否必选    |   字段类型   |字段说明
 ------  |  -----------|-------------|-----------
-schoolId | true | int | 学校ID 
+sn | true | int | 设备编号
 sno | false | string | 学生编号，刷脸数据，和 cno 二选一 
 cno | false | string | 学生卡号，刷卡数据，和 sno 二选一
 
