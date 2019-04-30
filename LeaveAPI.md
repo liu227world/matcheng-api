@@ -67,6 +67,9 @@ version | false | string | 软件版本号
     "category": 1,
     "schoolId": 1,
     "place": "学校南门",
+    "control": "0.8",
+    "brightness": 80,
+    "loudness": 80,
     "run": 1,
     "version": "1.0.0"
 }
@@ -82,6 +85,9 @@ intro | string | 设备说明
 category | int | 设备类型：1-离校终端；2-入校终端
 schoolId | int | 学校ID
 place | string | 安装位置
+control | string | 人脸识别阈值
+brightness | int | 屏幕亮度，可选值为0到100的整数
+loudness | int | 音量，可选值为0到100的整数
 run | int | 运行状态：1-正常；0-异常
 version | string | 软件版本号
 
