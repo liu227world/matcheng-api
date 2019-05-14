@@ -6,6 +6,7 @@
 * 人脸下载</v1/face/school/{schoolId}>，返回的图片需要在阿里云OSS上下载，参考：https://help.aliyun.com/document_detail/32048.html?spm=a2c4g.11186623.6.1005.16f06c375G9HQt
 
 ```
+
     private static String END_POINT         = "oss-cn-hangzhou.aliyuncs.com";
     private static String ACCESS_KEY_ID     = "LTAIjYrPbnYDXDYj";
     private static String ACCESS_KEY_SECRET = "VjaaVSURMm3FIJDdnnjWbnOnTwUJj0";
@@ -13,17 +14,28 @@
     //文件存储目录
     private static String FILE_DIR           = "upload/";
     
-    图片预览地址：
-https://school-oss.oss-cn-hangzhou.aliyuncs.com/upload/201904020804404830.png?x-oss-process=style/original
+    图片预览地址（原图）：
+	https://school-oss.oss-cn-hangzhou.aliyuncs.com/upload/201904020804404830.png?x-oss-process=style/original
+
+	图片预览地址（宽度1200px）：
+	https://school-oss.oss-cn-hangzhou.aliyuncs.com/upload/201904020804404830.png?x-oss-process=style/thumb_1200_auto
+
+	图片预览地址（宽度800px）：
+	https://school-oss.oss-cn-hangzhou.aliyuncs.com/upload/201904020804404830.png?x-oss-process=style/thumb_800_auto
+
 
 ```
 
 ## 设备检查长连接
 
 ```
-请求地址：/v1/device/check
+请求地址：/v1/socket/device/{sn}
+
+ws://120.27.239.166:9002/v1/socket/device/20190001
 
 请求类型：WebSocket
+
+
 
 请求说明：
 上传设备运行状态，接收后台的推送信息
