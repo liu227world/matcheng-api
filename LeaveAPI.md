@@ -31,10 +31,9 @@
 ```
 请求地址：/v1/socket/device/{sn}
 
-ws://120.27.239.166:9002/v1/socket/device/20190001
-
 请求类型：WebSocket
 
+示例：ws://120.27.239.166:9002/v1/socket/device/20190001
 
 
 请求说明：
